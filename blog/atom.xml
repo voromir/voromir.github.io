@@ -26,7 +26,7 @@
 <p>The blog supports tags as well!</p>
 <p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content>
         <author>
-            <name>Sébastien Lorber</name>
+            <name>Dani Vorobiev</name>
             <uri>https://sebastienlorber.com</uri>
         </author>
         <author>
