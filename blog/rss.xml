@@ -4,10 +4,26 @@
         <title>The junior's dev journey Blog</title>
         <link>https://voromir.github.io/blog</link>
         <description>The junior's dev journey Blog</description>
-        <lastBuildDate>Sun, 26 May 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 May 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Environment setup]]></title>
+            <link>https://voromir.github.io/blog/2024/05/29/setting-up</link>
+            <guid>https://voromir.github.io/blog/2024/05/29/setting-up</guid>
+            <pubDate>Wed, 29 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Setting up the terminal:]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="setting-up-the-terminal">Setting up the terminal:<a href="https://voromir.github.io/blog/2024/05/29/setting-up#setting-up-the-terminal" class="hash-link" aria-label="Direct link to Setting up the terminal:" title="Direct link to Setting up the terminal:">​</a></h2>
+<p>-MY ZSH + Fonts + iTerm
+-Aliases with custom scripts</p>
+<p>-Mac plugins: Alfred, Rectangle</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="chrome-plugins">Chrome plugins<a href="https://voromir.github.io/blog/2024/05/29/setting-up#chrome-plugins" class="hash-link" aria-label="Direct link to Chrome plugins" title="Direct link to Chrome plugins">​</a></h2>
+<p>-Chrome plugins: JSON, CSS Outline, DarkMode, ShewTabNumbers, React DeveloprTools, ModHeader, Redux DevTools.</p>]]></content:encoded>
+            <category>Terminal</category>
+            <category>MacOS</category>
+            <category>Environment</category>
+        </item>
         <item>
             <title><![CDATA[What is and MDX file?]]></title>
             <link>https://voromir.github.io/blog/2024/05/26/mdx-trial</link>
