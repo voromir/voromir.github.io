@@ -12,8 +12,11 @@
         <id>https://voromir.github.io/blog/2024/05/29/setting-up</id>
         <link href="https://voromir.github.io/blog/2024/05/29/setting-up"/>
         <updated>2024-05-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Setting up the terminal:]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="setting-up-the-terminal">Setting up the terminal:<a href="https://voromir.github.io/blog/2024/05/29/setting-up#setting-up-the-terminal" class="hash-link" aria-label="Direct link to Setting up the terminal:" title="Direct link to Setting up the terminal:">​</a></h2>
+        <summary type="html"><![CDATA[Unleash your terminal:]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="unleash-your-terminal">Unleash your terminal:<a href="https://voromir.github.io/blog/2024/05/29/setting-up#unleash-your-terminal" class="hash-link" aria-label="Direct link to Unleash your terminal:" title="Direct link to Unleash your terminal:">​</a></h2>
+<p>As a developer, you gonna spend some time with your terminal. Even if you like GUI. Terminal is one of our main tools and it's nice to have a visually pleasant and powerful terminal instead of borring and limited default one. In this post I gonna explain how I like to configure and personalize my Terminal and the main concepts thet we need to know: what is the shell, what is the terminal, what is a CLI, what different kinds of shelld do we have and how to take the better advantage of our terminal and shell configuration.</p>
+<p><em>Unleash your terminal</em> is the slogan of Oh My Zsh, an open source community driven Zsh manager. This is one of the quickest an easiest ways to get a powerful yet beautiful terminal in a few steps. They promise you:
+<em>Once installed, your terminal shell will become the talk of the town or your money back!</em></p>
 <p>-MY ZSH + Fonts + iTerm
 -Aliases with custom scripts</p>
 <p>-Mac plugins: Alfred, Rectangle</p>
