@@ -57,7 +57,7 @@ Terminal: Provides the interface for interacting with the shell.</p>
 <p>-Chrome plugins: JSON, CSS Outline, DarkMode, ShewTabNumbers, React DeveloprTools, ModHeader, Redux DevTools.</p>]]></content>
         <author>
             <name>Dani Vorobiev</name>
-            <uri>https://sebastienlorber.com</uri>
+            <uri>https://voromir.github.io/about/</uri>
         </author>
         <category label="Terminal" term="Terminal"/>
         <category label="MacOS" term="MacOS"/>
@@ -113,7 +113,7 @@ So you can create a very interactive page with just a markdown file.</p>
 <p>How cool is that? You can write code and see the result in real-time. And you can do this in a markdown file.</p>]]></content>
         <author>
             <name>Dani Vorobiev</name>
-            <uri>https://sebastienlorber.com</uri>
+            <uri>https://voromir.github.io/about/</uri>
         </author>
         <category label="mdx" term="mdx"/>
         <category label="markdown" term="markdown"/>
