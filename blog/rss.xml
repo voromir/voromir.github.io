@@ -13,9 +13,42 @@
             <link>https://voromir.github.io/blog/2024/05/29/setting-up</link>
             <guid>https://voromir.github.io/blog/2024/05/29/setting-up</guid>
             <pubDate>Wed, 29 May 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Unleash your terminal:]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="unleash-your-terminal">Unleash your terminal:<a href="https://voromir.github.io/blog/2024/05/29/setting-up#unleash-your-terminal" class="hash-link" aria-label="Direct link to Unleash your terminal:" title="Direct link to Unleash your terminal:">​</a></h2>
-<p>As a developer, you gonna spend some time with your terminal. Even if you like GUI. Terminal is one of our main tools and it's nice to have a visually pleasant and powerful terminal instead of borring and limited default one. In this post I gonna explain how I like to configure and personalize my Terminal and the main concepts thet we need to know: what is the shell, what is the terminal, what is a CLI, what different kinds of shelld do we have and how to take the better advantage of our terminal and shell configuration.</p>
+            <description><![CDATA[You will need a terminal.]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="you-will-need-a-terminal">You will need a terminal.<a href="https://voromir.github.io/blog/2024/05/29/setting-up#you-will-need-a-terminal" class="hash-link" aria-label="Direct link to You will need a terminal." title="Direct link to You will need a terminal.">​</a></h2>
+<p>As a developer, you gonna spend some time with your terminal. Even if you like GUI. You will run tests, install packages and use Git, for exaple. Terminal is one of our main tools and it's nice to have a visually pleasant and powerful terminal instead of borring and limited default one. In this post I gonna explain how I like to configure and personalize my Terminal and the main concepts thet we need to know: what is the shell, what is the terminal, what is a CLI, what different kinds of shelld do we have and how to take the better advantage of our terminal and shell configuration.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="terminal-or-shell">Terminal or Shell?<a href="https://voromir.github.io/blog/2024/05/29/setting-up#terminal-or-shell" class="hash-link" aria-label="Direct link to Terminal or Shell?" title="Direct link to Terminal or Shell?">​</a></h2>
+<p>There are a lot of terms that usually are used to refer to the same thing: Terminal, Shell, CLI and Console. Nut not everything is the same. To understand the problem we need to understand the difference between Shell and Terminal.</p>
+<p>Differences between terminal and shell. Different shells:
+-sh (Bourne Shell)
+-bash (Bourne Again Shell)
+-zsh (Z Shell)
+-csh (C Shell)
+-ksh (Korn Shell)</p>
+<p>Different terminals:
+-GNOME Terminal
+-Konsole
+-xterm
+-iTerm2
+-Kitty
+-Warp (with AI)</p>
+<p>On macOS, <a href="https://iterm2.com/features.html" target="_blank" rel="noopener noreferrer">iTerm</a> is the most popular terminal emulator. While it resembles a classic console, it offers powerful features like split views, multiple tabs, customizable hotkeys, and extensive configuration options. Accessing the Preferences menu in iTerm reveals a wide range of settings you can adjust to personalize your experience.</p>
+<p>iTerm key features:</p>
+<p>-Multiple tabs (with color options), split views.
+-Find and filter content in the terminal</p>
+<ul>
+<li>Session Managment. Reopen all the tabs exactly as they were.</li>
+<li>BONUS: broadcast inputs</li>
+</ul>
+<p>Tip: depending on your default permission settings you can experience the "operation not permitted error". If this happens to you, you need to go to your MacOS setting, select Privacy and Security and give Full disk acess to iTerm2.</p>
+<p>Shell: Interprets and executes commands.
+Terminal: Provides the interface for interacting with the shell.</p>
+<p>Indeed, there are linux distros without Desktop Manager, like Arch Linux.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="unix-based-systems">UNIX based systems<a href="https://voromir.github.io/blog/2024/05/29/setting-up#unix-based-systems" class="hash-link" aria-label="Direct link to UNIX based systems" title="Direct link to UNIX based systems">​</a></h2>
+<p>We often hear about UNIX based systems and we know that MacOS and Linux are UNIX based systems. But what is really a UNIX system? Indeed, UNIX has a lot of history behind</p>
+<p>What shell am I using?</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">echo $SHELL</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>As of macOS Catalina (10.15), the default shell for macOS was changed from Bash to Zsh due to licensing reasons (GPLv3).</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="unleash-your-terminal">Unleash your terminal<a href="https://voromir.github.io/blog/2024/05/29/setting-up#unleash-your-terminal" class="hash-link" aria-label="Direct link to Unleash your terminal" title="Direct link to Unleash your terminal">​</a></h2>
 <p><em>Unleash your terminal</em> is the slogan of <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer">Oh My Zsh</a>, an open source community driven Zsh manager. This is one of the quickest an easiest ways to get a powerful yet beautiful terminal in a few steps. They promise you:
 <em>Once installed, your terminal shell will become the talk of the town or your money back!</em></p>
 <p>-MY ZSH + Fonts + iTerm
@@ -35,8 +68,9 @@
             <description><![CDATA[Empowering the text]]></description>
             <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="empowering-the-text">Empowering the text<a href="https://voromir.github.io/blog/2024/05/26/mdx-trial#empowering-the-text" class="hash-link" aria-label="Direct link to Empowering the text" title="Direct link to Empowering the text">​</a></h2>
 <p>Markdown is a tool that allows you to write using an easy-to-write plain text format, that is converted to structurally valid HTML.
-Markdown is great. It's very intuitive so you can start using it just after learning the basic syntax.
-And lots of great platforms are powered by markdown syntax: Obsidian, Notion, Stack Overflow, GitHub,
+Originally, it was intended to easly create content for the web. And it does it great. It's very intuitive so you can start using it just after learning the basic syntax.
+Once you write your plain text with proper Markdown syntax, the Markdown parser will convert it into valid HTML that reflects the intended layout and style.
+And lots of great platforms are powered by markdown syntax: Obsidian, Trello, Notion, Stack Overflow, GitHub,
 Jekyll, Docusaurus and much more. So if you're getting in the software development world, you will be using
 markdown for sure.</p>
 <p>With Markdown youcan write text, lists, tables, code blocks, images, links, and much more. Let's put here
