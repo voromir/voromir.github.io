@@ -39,14 +39,22 @@
 <li>BONUS: broadcast inputs</li>
 </ul>
 <p>Tip: depending on your default permission settings you can experience the "operation not permitted error". If this happens to you, you need to go to your MacOS setting, select Privacy and Security and give Full disk acess to iTerm2.</p>
+<blockquote>
+<p>WARNING: Modifying the iTerm color scheme may prevent text colors from displaying correctly. If you encounter this issue, check the <code>Minimum contrast</code> property in your profile settings and reduce its value.</p>
+</blockquote>
 <p>Shell: Interprets and executes commands.
 Terminal: Provides the interface for interacting with the shell.</p>
-<p>Indeed, there are linux distros without Desktop Manager, like Arch Linux.</p>
+<p>Commands are programs stored on the disk. When a user types a command, the shell searches for it in the directories specified by the PATH environment variable. If found, the shell attempts to execute the command.</p>
+<p>The PATH variable is a list of directories that the shell searches for commands. Users can modify the PATH variable to add or remove directories from the search path. This allows users to customize the commands that are available to them.</p>
+<p>The terminal in Linux is very powerful. There are even linux distros without Desktop Manager, like Arch Linux.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="unix-based-systems">UNIX based systems<a href="https://voromir.github.io/blog/2024/05/29/setting-up#unix-based-systems" class="hash-link" aria-label="Direct link to UNIX based systems" title="Direct link to UNIX based systems">​</a></h2>
 <p>We often hear about UNIX based systems and we know that MacOS and Linux are UNIX based systems. But what is really a UNIX system? Indeed, UNIX has a lot of history behind</p>
 <p>What shell am I using?</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">echo $SHELL</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>As of macOS Catalina (10.15), the default shell for macOS was changed from Bash to Zsh due to licensing reasons (GPLv3).</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="other-types-of-shells">Other types of shells:<a href="https://voromir.github.io/blog/2024/05/29/setting-up#other-types-of-shells" class="hash-link" aria-label="Direct link to Other types of shells:" title="Direct link to Other types of shells:">​</a></h2>
+<p>Cloud shell: is a browser-based command-line interface provided by cloud service providers to manage cloud resources, run scripts, debug code, and experiment with new tools or technologies. It's common to use cloud shell to interact with services like DynamoDB, S3, and BigQuery.</p>
+<p>Reverse Shell: A reverse shell is a type of cyberattack technique where an attacker establishes a connection back to a compromised victim's machine. This connection allows the attacker to gain remote access and execute commands on the victim's system, essentially taking control of the machine. It's not a technology in itself but rather a method used by attackers to exploit vulnerabilities and gain unauthorized access.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="unleash-your-terminal">Unleash your terminal<a href="https://voromir.github.io/blog/2024/05/29/setting-up#unleash-your-terminal" class="hash-link" aria-label="Direct link to Unleash your terminal" title="Direct link to Unleash your terminal">​</a></h2>
 <p><em>Unleash your terminal</em> is the slogan of <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer">Oh My Zsh</a>, an open source community driven Zsh manager. This is one of the quickest an easiest ways to get a powerful yet beautiful terminal in a few steps. They promise you:
 <em>Once installed, your terminal shell will become the talk of the town or your money back!</em></p>
