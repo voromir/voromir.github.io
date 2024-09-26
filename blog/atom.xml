@@ -14,22 +14,14 @@
         <updated>2024-05-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[You will need a terminal.]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="you-will-need-a-terminal">You will need a terminal.<a href="https://voromir.github.io/blog/2024/05/29/setting-up#you-will-need-a-terminal" class="hash-link" aria-label="Direct link to You will need a terminal." title="Direct link to You will need a terminal.">​</a></h2>
-<p>As a developer, you gonna spend some time with your terminal. Even if you like GUI. You will run tests, install packages and use Git, for exaple. Terminal is one of our main tools and it's nice to have a visually pleasant and powerful terminal instead of borring and limited default one. In this post I gonna explain how I like to configure and personalize my Terminal and the main concepts thet we need to know: what is the shell, what is the terminal, what is a CLI, what different kinds of shelld do we have and how to take the better advantage of our terminal and shell configuration.</p>
+<p>As a developer, you gonna spend some time with your terminal. Even if you like GUI. You will run tests, install packages and use Git, for exaple. Terminal is one of our main tools and it's nice to have a visually pleasant and powerful terminal instead of borring and limited default one. In this post I will explain how I like to configure and personalize my Terminal and the main concepts thet we need to know about: what is the shell, what is the terminal, what is a CLI, what different kinds of shells do we have and how to take the better advantage of our terminal and shell configuration.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="terminal-or-shell">Terminal or Shell?<a href="https://voromir.github.io/blog/2024/05/29/setting-up#terminal-or-shell" class="hash-link" aria-label="Direct link to Terminal or Shell?" title="Direct link to Terminal or Shell?">​</a></h2>
-<p>There are a lot of terms that usually are used to refer to the same thing: Terminal, Shell, CLI and Console. But not everything is the same. To better understand what we're about to do we need to understand the difference between Shell and Terminal.</p>
-<p>Differences between terminal and shell. Different shells:
--sh (Bourne Shell)
--bash (Bourne Again Shell)
--zsh (Z Shell)
--csh (C Shell)
--ksh (Korn Shell)</p>
-<p>Different terminals:
--GNOME Terminal
--Konsole
--xterm
--iTerm2
--Kitty
--Warp (with AI)</p>
+<p>There are a lot of terms that usually are used to refer to the same thing: Terminal, Shell, Command Line, CLI, Console... But not everything is the same. To better understand what we're about to do we need to understand the difference between Shell and Terminal.</p>
+<p>The terminal was a device that permitted transciption and entering data in the early computer era. It was an elecromechanical device that sended and recieved data form the host, which was called the mainframe. Similarly, a terminal emulator is a program that provides a text-based interface for the human-computer interaction. Different terminal emulators can be GNOME Terminal, Konsole, xterm, Kitty o Warp (an AI enhanced terminal emulator).</p>
+<p>A shell, on the other hand, is the interpreter that runs inside the terminal. We can change our terminal emulator, for example from the MacOs terminal to iTerm2, but as long as we don't change the Shell, we will be able to interact in the same way with the new terminal. The terminal is only and interface for the Shell which is what you are interacting with. Indeed, Sh Shell was run on the physical terminals, providing the same core functionality that modern shells and terminal emulators carry forward today. Sh Shell was a great improvement and gave a grat power to UNIX introducing Scripting, Redirection, Variables and Control Structures.</p>
+<p>If you want to know what shell you are using, you can try to use:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">echo $SHELL</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="installing-terminal-emulator">Installing terminal emulator<a href="https://voromir.github.io/blog/2024/05/29/setting-up#installing-terminal-emulator" class="hash-link" aria-label="Direct link to Installing terminal emulator" title="Direct link to Installing terminal emulator">​</a></h2>
 <p>On macOS, <a href="https://iterm2.com/features.html" target="_blank" rel="noopener noreferrer">iTerm</a> is the most popular terminal emulator. While it resembles a classic console, it offers powerful features like split views, multiple tabs, customizable hotkeys, and extensive configuration options. Accessing the Preferences menu in iTerm reveals a wide range of settings you can adjust to personalize your experience.</p>
 <p>iTerm key features:</p>
 <p>-Multiple tabs (with color options), split views.
