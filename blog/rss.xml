@@ -18,18 +18,36 @@
 <p>As a developer, you gonna spend some time with your terminal. Even if you like GUI. You will run tests, install packages and use Git, for exaple. Terminal is one of our main tools and it's nice to have a visually pleasant and powerful terminal instead of borring and limited default one. In this post I will explain how I like to configure and personalize my Terminal and the main concepts thet we need to know about: what is the shell, what is the terminal, what is a CLI, what different kinds of shells do we have and how to take the better advantage of our terminal and shell configuration.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="terminal-or-shell">Terminal or Shell?<a href="https://voromir.github.io/blog/2024/05/29/setting-up#terminal-or-shell" class="hash-link" aria-label="Direct link to Terminal or Shell?" title="Direct link to Terminal or Shell?">​</a></h2>
 <p>There are a lot of terms that usually are used to refer to the same thing: Terminal, Shell, Command Line, CLI, Console... But not everything is the same. To better understand what we're about to do we need to understand the difference between Shell and Terminal.</p>
-<p>The terminal was a device that permitted transciption and entering data in the early computer era. It was an elecromechanical device that sended and recieved data form the host, which was called the mainframe. Similarly, a terminal emulator is a program that provides a text-based interface for the human-computer interaction. Different terminal emulators can be GNOME Terminal, Konsole, xterm, Kitty o Warp (an AI enhanced terminal emulator).</p>
-<p>A shell, on the other hand, is the interpreter that runs inside the terminal. We can change our terminal emulator, for example from the MacOs terminal to iTerm2, but as long as we don't change the Shell, we will be able to interact in the same way with the new terminal. The terminal is only and interface for the Shell which is what you are interacting with. Indeed, Sh Shell was run on the physical terminals, providing the same core functionality that modern shells and terminal emulators carry forward today. Sh Shell was a great improvement and gave a grat power to UNIX introducing Scripting, Redirection, Variables and Control Structures.</p>
-<p>If you want to know what shell you are using, you can try to use:</p>
+<p>The terminal was a device that permitted transciption and entering data in the early computer era. It was an elecromechanical device that sended and recieved data form the host, which was called the mainframe. Similarly, nowaday a terminal emulator is a program that provides a text-based interface for the human-computer interaction. Different terminal emulators can be GNOME Terminal, Konsole, xterm, Kitty o Warp (an AI enhanced terminal emulator). Operating systems come with default terminar emulator, but it's easy to install whatever terminal emulator you like.</p>
+<p>You have tmux as well, which is an abbreviation of Terminal MUltipleXer. With tmux you can create a session in a machine, run some commands, deattach from it, start another session to run other processes and then attach back to the first one. You can even detach from an SSH session and attach to it from somwhere else using another machine. This is very useful if you are usually using SSH to connect to remote machines.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-the-shell">What the shell?<a href="https://voromir.github.io/blog/2024/05/29/setting-up#what-the-shell" class="hash-link" aria-label="Direct link to What the shell?" title="Direct link to What the shell?">​</a></h2>
+<p>A shell is an interface to interact with the kernel. As any other interface, it hides the internal function of the kernel and only brings the user what is needed. The shell can be a GUI (Graphical User Interface) or a command line interpreter.
+Is the interpreter that runs inside the terminal. We can change our terminal emulator, for example from the MacOs terminal to iTerm2, but as long as we don't change the Shell, we will be able to interact in the same way with the new terminal. The terminal is only and interface for the Shell which is what you are interacting with. Indeed, Sh Shell was run on the physical terminals, providing the same core functionality that modern shells and terminal emulators carry forward today. Sh Shell was a great improvement and gave a grat power to UNIX introducing Scripting, Redirection, Variables and Control Structures.</p>
+<p>What happens when you run a utility like nano:</p>
+<ol>
+<li>nano (the user application) doesn’t interact directly with the hardware.</li>
+<li>It sends system calls (like open() or read()) to the kernel.</li>
+<li>The kernel translates these system calls into lower-level instructions and interacts with the file system and the hardware (such as the hard drive or SSD) to retrieve or modify data.</li>
+<li>The device driver specific to the storage hardware manages the communication between the kernel and the physical storage device.</li>
+</ol>
+<p>Here we can see the general schema of the linux architecture here:</p>
+<p><img decoding="async" loading="lazy" alt="Linux_architecture_preview" src="https://voromir.github.io/assets/images/linux_architecture_preview-e67ee046c2ee4534aa24f10a0c1fa975.png" width="2128" height="1224" class="img_ev3q"></p>
+<p>If you want to know what shell you are using, you can use:</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">echo $SHELL</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="shell-communication-flow">Shell communication flow<a href="https://voromir.github.io/blog/2024/05/29/setting-up#shell-communication-flow" class="hash-link" aria-label="Direct link to Shell communication flow" title="Direct link to Shell communication flow">​</a></h2>
+<p>To summarise it, a terminal emulator is a program that provides a text-based user interface. It sends user inputs to the shell and displays the shell’s outputs. The shell is a command-line interpreter that translates high-level commands into system calls to interact with the kernel (the core of the operating system). The kernel manages system resources, including the CPU, memory, and file system. When a command is executed, the kernel performs the requested operations and returns the result to the shell, which then outputs the result to the terminal emulator for the user to see.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="installing-terminal-emulator">Installing terminal emulator<a href="https://voromir.github.io/blog/2024/05/29/setting-up#installing-terminal-emulator" class="hash-link" aria-label="Direct link to Installing terminal emulator" title="Direct link to Installing terminal emulator">​</a></h2>
 <p>On macOS, <a href="https://iterm2.com/features.html" target="_blank" rel="noopener noreferrer">iTerm</a> is the most popular terminal emulator. While it resembles a classic console, it offers powerful features like split views, multiple tabs, customizable hotkeys, and extensive configuration options. Accessing the Preferences menu in iTerm reveals a wide range of settings you can adjust to personalize your experience.</p>
 <p>iTerm key features:</p>
 <p>-Multiple tabs (with color options), split views.
 -Find and filter content in the terminal</p>
 <ul>
-<li>Session Managment. Reopen all the tabs exactly as they were.</li>
-<li>BONUS: broadcast inputs</li>
+<li>
+<p>Session Managment. Reopen all the tabs exactly as they were. When you open a new pane in iTem2 you probably se something like: Last login: <code>Fri Sep 27 20:11:13 on ttys006</code></p>
+</li>
+<li>
+<p>BONUS: broadcast inputs</p>
+</li>
 </ul>
 <p>Tip: depending on your default permission settings you can experience the "operation not permitted error". If this happens to you, you need to go to your MacOS setting, select Privacy and Security and give Full disk acess to iTerm2.</p>
 <blockquote>
@@ -42,8 +60,6 @@ Terminal: Provides the interface for interacting with the shell.</p>
 <p>The terminal in Linux is very powerful. There are even linux distros without Desktop Manager, like Arch Linux.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="unix-based-systems">UNIX based systems<a href="https://voromir.github.io/blog/2024/05/29/setting-up#unix-based-systems" class="hash-link" aria-label="Direct link to UNIX based systems" title="Direct link to UNIX based systems">​</a></h2>
 <p>We often hear about UNIX based systems and we know that MacOS and Linux are UNIX based systems. But what is really a UNIX system? Indeed, UNIX has a lot of history behind</p>
-<p>What shell am I using?</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">echo $SHELL</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>As of macOS Catalina (10.15), the default shell for macOS was changed from Bash to Zsh due to licensing reasons (GPLv3).</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="other-types-of-shells">Other types of shells:<a href="https://voromir.github.io/blog/2024/05/29/setting-up#other-types-of-shells" class="hash-link" aria-label="Direct link to Other types of shells:" title="Direct link to Other types of shells:">​</a></h2>
 <p>Cloud shell: is a browser-based command-line interface provided by cloud service providers to manage cloud resources, run scripts, debug code, and experiment with new tools or technologies. It's common to use cloud shell to interact with services like DynamoDB, S3, and BigQuery.</p>
@@ -52,7 +68,16 @@ Terminal: Provides the interface for interacting with the shell.</p>
 <p><em>Unleash your terminal</em> is the slogan of <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer">Oh My Zsh</a>, an open source community driven Zsh manager. This is one of the quickest an easiest ways to get a powerful yet beautiful terminal in a few steps. They promise you:
 <em>Once installed, your terminal shell will become the talk of the town or your money back!</em></p>
 <p>-MY ZSH + Fonts + iTerm
--Aliases with custom scripts</p>
+<a href="https://www.nerdfonts.com/#home" target="_blank" rel="noopener noreferrer">Fonts an characters cheatsheet</a>
+If you do some mods to you terminal and add some icons and fonts in the iTerm, maybe you won't see this changes in your VSCode terminal. You will need to specify the fonts for this terminal as well. While using the escapment characters is more stily, if you don't want to spend extra time in configuration, just use emojis.</p>
+<ul>
+<li>
+<p>Powerlevel10k or agnoster. Youc can use other themes like Cappuccin (<a href="https://catppuccin.com/" target="_blank" rel="noopener noreferrer">https://catppuccin.com</a>) or those placed in you theme directory (<code>~/.oh-my-zsh/themes/</code>).</p>
+</li>
+<li>
+<p>Aliases with custom scripts</p>
+</li>
+</ul>
 <p>-Mac plugins: Alfred, Rectangle</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="chrome-plugins">Chrome plugins<a href="https://voromir.github.io/blog/2024/05/29/setting-up#chrome-plugins" class="hash-link" aria-label="Direct link to Chrome plugins" title="Direct link to Chrome plugins">​</a></h2>
 <p>-Chrome plugins: JSON, CSS Outline, DarkMode, ShewTabNumbers, React DeveloprTools, ModHeader, Redux DevTools.</p>]]></content:encoded>
