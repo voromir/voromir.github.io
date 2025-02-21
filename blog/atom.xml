@@ -8,14 +8,16 @@
     <subtitle>More than code Blog</subtitle>
     <icon>https://voromir.github.io/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Terminal setup]]></title>
+        <title type="html"><![CDATA[Terminal customization]]></title>
         <id>https://voromir.github.io/blog/2024/05/29/setting-up</id>
         <link href="https://voromir.github.io/blog/2024/05/29/setting-up"/>
         <updated>2024-05-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[You will need a terminal.]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="you-will-need-a-terminal">You will need a terminal.<a href="https://voromir.github.io/blog/2024/05/29/setting-up#you-will-need-a-terminal" class="hash-link" aria-label="Direct link to You will need a terminal." title="Direct link to You will need a terminal.">​</a></h2>
-<p>//TODO: Your environment is your workshop and it is more logical to adapt your workshop to your need rather than the countrary.</p>
-<p>As a developer, you gonna spend some time with your terminal. Even if you like GUI. You will run tests, install packages and use Git, for exaple. Terminal is one of our main tools and it's nice to have a visually pleasant and powerful terminal instead of borring and limited default one. In this post I will explain how I like to configure and personalize my Terminal and the main concepts thet we need to know about: what is the shell, what is the terminal, what is a CLI, what different kinds of shells do we have and how to take the better advantage of our terminal and shell configuration.</p>
+<p>As a developer, you gonna spend some time with your terminal. Even if you like GUI. You will run tests, install packages and use Git, for exaple. Terminal is one of our main tools and it's nice to have a visually pleasant and powerful terminal instead of borring and limited default one. In this post I will explain how I like to configure and personalize my Terminal and the main concepts thet we need to know about: what is the shell, what is the terminal, what is a CLI, what different kinds of shells do we have and how to take the better advantage of our terminal and shell configuration. You can think about it like this:</p>
+<blockquote>
+<p>Your environment is your workshop and it is more logical to adapt your workshop to your need rather than the countrary.</p>
+</blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="terminal-or-shell">Terminal or Shell?<a href="https://voromir.github.io/blog/2024/05/29/setting-up#terminal-or-shell" class="hash-link" aria-label="Direct link to Terminal or Shell?" title="Direct link to Terminal or Shell?">​</a></h2>
 <p>There are a lot of terms that usually are used to refer to the same thing: Terminal, Shell, Command Line, CLI, Console... But not everything is the same. To better understand what we're about to do we need to understand the difference between Shell and Terminal.</p>
 <p>The terminal was a device that permitted transciption and entering data in the early computer era. It was an elecromechanical device that sended and recieved data form the host, which was called the mainframe. Similarly, nowaday a terminal emulator is a program that provides a text-based interface for the human-computer interaction. Different terminal emulators can be GNOME Terminal, Konsole, xterm, Kitty o Warp (an AI enhanced terminal emulator). Operating systems come with default terminar emulator, but it's easy to install whatever terminal emulator you like.</p>
@@ -42,42 +44,39 @@
 <p><code>SHELL</code> variable is temporal and session scoped, which means that it's deleted when you terminate the session. Typically, the system sets the <code>SHELL</code> environment variable based on the default shell specified in your <code>/etc/passwd</code> file. But this setup can be overwritten by the other configurations, like your terminal emulator configuration.</p>
 <p>If you want to persist your shell configuration you can use this command instead:</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">chsh -s /bin/zsh</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>or a quicker option running <code>bash</code> to switch to bash and running <code>zsh</code> to switch to zsh.</p>
-<p>Shell evolutioned from really basic interpreted to a very powerful tool. There are many shells thet you can use in a UNIX-like system, but the most used are bash and zsh. If you're interested in the evolution of the shells, please, check out this <a href="https://developer.ibm.com/tutorials/l-linux-shells/" target="_blank" rel="noopener noreferrer">IBM site</a>.</p>
+<p>And you allways can run <code>bash</code> to switch to bash and run <code>zsh</code> or <code>exit</code> to switch to zsh again.</p>
+<p>Shell evolutioned from really basic interpreter to a very powerful tool. There are many shells thet you can use in a UNIX-like system, but the most used are bash and zsh. If you're interested in the evolution of the shells, please, check out this <a href="https://developer.ibm.com/tutorials/l-linux-shells/" target="_blank" rel="noopener noreferrer">IBM site</a>.</p>
 <p>The great thing about ZSH is that the support is great and the community is very active, so you can file lots of documentation, cofigurations and interesting stuff about it online.</p>
-<p>The only problem is that out of the box ZSH is poorly configured and it's even worse than bash (LIST THINGS THAT IT DOESENT HAVE). But, we have <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank" rel="noopener noreferrer">Oh My Zsh</a>, a community configuration that enables all the most udeful functionalities to ZSH and gives it a nicer aspect. Oh My Zsh includes aliases, theemes and acts like a plugin manager.</p>
+<p>The only problem is that out of the box ZSH is poorly configured and it's even worse than bash (reverse search, command history, completion system). But, we have <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank" rel="noopener noreferrer">Oh My Zsh</a>, a community configuration that enables all the most udeful functionalities to ZSH and gives it a nicer aspect. Oh My Zsh includes aliases, theemes and acts like a plugin manager.</p>
 <p>To switch between themes you can:</p>
 <p><code>omz theme list</code></p>
 <p>and</p>
-<p><code>omz theme set</code></p>
+<p><code>omz theme set THEME_NAME</code></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="shell-communication-flow">Shell communication flow<a href="https://voromir.github.io/blog/2024/05/29/setting-up#shell-communication-flow" class="hash-link" aria-label="Direct link to Shell communication flow" title="Direct link to Shell communication flow">​</a></h2>
 <p>To summarise it, a terminal emulator is a program that provides a text-based user interface. It sends user inputs to the shell and displays the shell’s outputs. The shell is a command-line interpreter that translates high-level commands into system calls to interact with the kernel (the core of the operating system). The kernel manages system resources, including the CPU, memory, and file system. When a command is executed, the kernel performs the requested operations and returns the result to the shell, which then outputs the result to the terminal emulator for the user to see.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="installing-terminal-emulator">Installing terminal emulator<a href="https://voromir.github.io/blog/2024/05/29/setting-up#installing-terminal-emulator" class="hash-link" aria-label="Direct link to Installing terminal emulator" title="Direct link to Installing terminal emulator">​</a></h2>
 <p>On macOS, <a href="https://iterm2.com/features.html" target="_blank" rel="noopener noreferrer">iTerm</a> is the most popular terminal emulator. While it resembles a classic console, it offers powerful features like split views, multiple tabs, customizable hotkeys, and extensive configuration options. Accessing the Preferences menu in iTerm reveals a wide range of settings you can adjust to personalize your experience.</p>
 <p>iTerm key features:</p>
-<p>-Multiple tabs (with color options), split views.
--Find and filter content in the terminal</p>
 <ul>
-<li>Session Managment. Reopen all the tabs exactly as they were. When you open a new pane in iTem2 you probably se something like: Last login: <code>Fri Sep 27 20:11:13 on ttys006</code></li>
+<li>Multiple tabs (with color options), split views.</li>
+<li>Find and filter content in the terminal</li>
+<li>Session Managment. Reopen all the tabs exactly as they were.</li>
+<li>Good theming and customization options.</li>
 </ul>
-<p>To know all the sessions you are running, use <code>who</code> or <code>w</code> commands. In the output you will se al your terminal sessions runnins and your system process with the uptime, so at least you will have two results.</p>
-<ul>
-<li>BONUS: broadcast inputs</li>
-</ul>
-<p>Tip: depending on your default permission settings you can experience the "operation not permitted error". If this happens to you, you need to go to your MacOS setting, select Privacy and Security and give Full disk acess to iTerm2.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="terminal-comparison-table">Terminal Comparison table<a href="https://voromir.github.io/blog/2024/05/29/setting-up#terminal-comparison-table" class="hash-link" aria-label="Direct link to Terminal Comparison table" title="Direct link to Terminal Comparison table">​</a></h2>
+<table><thead><tr><th></th><th>Search</th><th>Mouse support</th><th>Theming</th><th>Autosuggest</th><th>History</th><th>O.Source</th><th>Stability</th></tr></thead><tbody><tr><td><strong>MacOS</strong></td><td><em>Basic</em></td><td><em>Basic</em>, no TUI</td><td><em>Basic</em></td><td><em>No</em></td><td><em>Basic</em></td><td><em>no</em></td><td><strong>Great</strong></td></tr><tr><td><strong>iTerm2</strong></td><td><strong>Great</strong></td><td><strong>Full</strong>, tmux</td><td><em>Good</em></td><td><em>Add-on</em> Shell Integration</td><td><em>Good</em></td><td><em>yes</em></td><td><strong>Great</strong></td></tr><tr><td><strong>Warp</strong></td><td><strong>Great</strong>, block</td><td><strong>Full</strong>, Multiline</td><td><strong>Great</strong></td><td><strong>Great</strong>, AI powered</td><td><strong>Great</strong></td><td><em>no</em></td><td><em>Good</em></td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="tips-for-using-iterm2">Tips for using iTerm2<a href="https://voromir.github.io/blog/2024/05/29/setting-up#tips-for-using-iterm2" class="hash-link" aria-label="Direct link to Tips for using iTerm2" title="Direct link to Tips for using iTerm2">​</a></h2>
+<p>When you open a new pane in iTem2 you probably se something like: Last login: <code>Fri Sep 27 20:11:13 on ttys006</code>. To know all the sessions you are running, use <code>who</code> or <code>w</code> commands. In the output you will se al your terminal sessions runnins and your system process with the uptime, so at least you will have two results.</p>
+<p>Depending on your default permission settings you can experience the "operation not permitted error". If this happens to you, you need to go to your MacOS setting, select Privacy and Security and give Full disk acess to iTerm2.</p>
 <blockquote>
 <p>WARNING: Modifying the iTerm color scheme may prevent text colors from displaying correctly. If you encounter this issue, check the <code>Minimum contrast</code> property in your profile settings and reduce its value.</p>
 </blockquote>
-<p>Shell: Interprets and executes commands.
-Terminal: Provides the interface for interacting with the shell.</p>
-<p>Commands are programs stored on the disk. When a user types a command, the shell searches for it in the directories specified by the PATH environment variable. If found, the shell attempts to execute the command.</p>
-<p>The PATH variable is a list of directories that the shell searches for commands. Users can modify the PATH variable to add or remove directories from the search path. This allows users to customize the commands that are available to them.</p>
 <p>The terminal in Linux is very powerful. There are even linux distros without Desktop Manager, like Arch Linux.</p>
-<p>CMD + Shift + Enter to maximize the current pane in iTerm2.
-CMD + Option + Arrows to switch between the panes.</p>
+<p><code>CMD + Shift + Enter</code> to maximize the current pane in iTerm2.
+<code>CMD + Option + Arrows</code> or <code>CMD + [ or ]</code> to switch between the panes.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="unix-based-systems">UNIX based systems<a href="https://voromir.github.io/blog/2024/05/29/setting-up#unix-based-systems" class="hash-link" aria-label="Direct link to UNIX based systems" title="Direct link to UNIX based systems">​</a></h2>
 <p>We often hear about UNIX based systems and we know that MacOS and Linux are UNIX based systems. But what is really a UNIX system? Indeed, UNIX has a lot of history behind</p>
-<p>As of macOS Catalina (10.15), the default shell for macOS was changed from Bash to Zsh due to licensing reasons (GPLv3).</p>
+<p>As of macOS Catalina (10.15), the default shell for macOS was changed from Bash to Zsh. This change was due to the release of the GPLv3 license, which explicitly disallows the use of GPL-licensed software in a closed system that does not allow the user to modify the software and run it on the machine.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="other-types-of-shells">Other types of shells:<a href="https://voromir.github.io/blog/2024/05/29/setting-up#other-types-of-shells" class="hash-link" aria-label="Direct link to Other types of shells:" title="Direct link to Other types of shells:">​</a></h2>
 <p>Cloud shell: is a browser-based command-line interface provided by cloud service providers to manage cloud resources, run scripts, debug code, and experiment with new tools or technologies. It's common to use cloud shell to interact with services like DynamoDB, S3, and BigQuery.</p>
 <p>Reverse Shell: A reverse shell is a type of cyberattack technique where an attacker establishes a connection back to a compromised victim's machine. This connection allows the attacker to gain remote access and execute commands on the victim's system, essentially taking control of the machine. It's not a technology in itself but rather a method used by attackers to exploit vulnerabilities and gain unauthorized access.</p>
@@ -86,15 +85,12 @@ CMD + Option + Arrows to switch between the panes.</p>
 <em>Once installed, your terminal shell will become the talk of the town or your money back!</em></p>
 <p>To install Oh My Zsh you can:</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>To install the fonts, use:</p>
+<p>Some of OMZ themes require special fonts to show icons and special characters in the terminal. To install the fonts you can go to <a href="https://www.nerdfonts.com/" target="_blank" rel="noopener noreferrer">https://www.nerdfonts.com</a> or just use:</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">brew install fonts-powerline</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>-MY ZSH + Fonts + iTerm
-<a href="https://www.nerdfonts.com/#home" target="_blank" rel="noopener noreferrer">Fonts an characters cheatsheet</a>
-If you do some mods to you terminal and add some icons and fonts in the iTerm, maybe you won't see this changes in your VSCode terminal. You will need to specify the fonts for this terminal as well. While using the escapment characters is more stily, if you don't want to spend extra time in configuration, just use emojis.</p>
-<ul>
-<li>Powerlevel10k or agnoster. Youc can use other themes like Cappuccin (<a href="https://catppuccin.com/" target="_blank" rel="noopener noreferrer">https://catppuccin.com</a>) or those placed in you theme directory (<code>~/.oh-my-zsh/themes/</code>).</li>
-</ul>
-<p>//TODO: include script to do it in a single step.</p>
+<p>or</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">brew install --cask font-hack-nerd-font</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>If you do some mods to you terminal and add some icons and fonts in the iTerm, maybe you won't see this changes in your VSCode terminal. You will need to specify the fonts for this terminal and all other terminals you use as well.</p>
+<p>Once you select a theme that you like, you can adjust the colors to your preference. Alternatively, you can visit <a href="https://catppuccin.com/" target="_blank" rel="noopener noreferrer">https://catppuccin.com</a> to download a well-built color scheme that you can use across your other code editors.</p>
 <p>Install Imgcat:</p>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">curl -O https://iterm2.com/utilities/imgcat</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">chmod +x imgcat</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>move it to your path</p>
@@ -114,30 +110,18 @@ If you do some mods to you terminal and add some icons and fonts in the iTerm, m
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="further-personalization">Further personalization<a href="https://voromir.github.io/blog/2024/05/29/setting-up#further-personalization" class="hash-link" aria-label="Direct link to Further personalization" title="Direct link to Further personalization">​</a></h2>
 <ul>
 <li>
-<p>Fuzzy finder. People use fzf. But if you use Warp, you don't need it because it come out of the box. Warp is written in Rust.</p>
+<p>Fuzzy Finder: You can install FZF by brew install fzf. This allows you to fuzzy find in all your documents. But if you use Warp, you don't need it because it comes out of the box with the same functionality, allowing you to easily search through files with fuzzy matching.</p>
 </li>
 <li>
-<p>Warp: CMD + Ctrl + t for the theme switcher.</p>
+<p>Zoxyde: Zoxyde is a powerful tool designed to streamline your workflow with customizable, fast, and interactive search and file navigation. It integrates well with your shell, enhancing productivity by providing intuitive fuzzy searching and file management.</p>
 </li>
 <li>
-<p>Multiline edition</p>
+<p>Yazi: Yazi is a tool that simplifies and enhances the way you work with CLI applications, providing features such as advanced autocomplete, custom shortcuts, and efficient command navigation. It's designed to boost productivity and reduce friction in terminal-based workflows.</p>
 </li>
 <li>
-<p>Zoxyde</p>
-</li>
-<li>
-<p>Install Cppuccin in warp:
-copy: <code>https://github.com/catppuccin/warp/blob/main/themes/catppuccin_mocha.yml</code> to <code>~/.warp/themes</code>. Create it if it's not there.</p>
-</li>
-<li>
-<p>Starship</p>
-</li>
-<li>
-<p>Aliases with custom scripts</p>
+<p>Starship: Starship is a fast and customizable prompt for any shell. It allows you to configure your prompt to display information like Git status, system performance, time, and much more in a clean and minimalistic style, without slowing down your terminal. It's highly modular, making it easy to add and adjust functionality.</p>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="terminal-configs">Terminal configs<a href="https://voromir.github.io/blog/2024/05/29/setting-up#terminal-configs" class="hash-link" aria-label="Direct link to Terminal configs" title="Direct link to Terminal configs">​</a></h2>
-<p>Infinite lines scroll.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="aliases">Aliases<a href="https://voromir.github.io/blog/2024/05/29/setting-up#aliases" class="hash-link" aria-label="Direct link to Aliases" title="Direct link to Aliases">​</a></h2>
 <p>You can set alias like this:</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">alias ll='ls -alF'</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
@@ -161,14 +145,11 @@ Alias expansion:</p>
 <li>Command execution</li>
 </ol>
 <p>Alias porecedence: By default, alias expansion is disabled in non-interactive shells (like scripts) to avoid unexpected behavior. But if you have both a shell function and an alias with the same name, the function will take precedence over the alias.</p>
-<p>-Mac plugins: Alfred, Rectangle. This two can be done by Rofi of Fzf in Linux environment. In other blog entry I show how to configure it Ubuntu and Parrot.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="chrome-plugins">Chrome plugins<a href="https://voromir.github.io/blog/2024/05/29/setting-up#chrome-plugins" class="hash-link" aria-label="Direct link to Chrome plugins" title="Direct link to Chrome plugins">​</a></h2>
-<p>-Chrome plugins: JSON, CSS Outline, DarkMode, ShewTabNumbers, React DeveloprTools, ModHeader, Redux DevTools.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="automate-it-in-a-script">Automate it in a script<a href="https://voromir.github.io/blog/2024/05/29/setting-up#automate-it-in-a-script" class="hash-link" aria-label="Direct link to Automate it in a script" title="Direct link to Automate it in a script">​</a></h2>
 <p>As you can see, it's a long process. But, if you have a configuration that you really like, you can automate it.
 There are multiple scripts on the internet for personalization, like this one for Parrot Linux with bspwm: <a href="https://github.com/xJackSx/BSPWMparrot" target="_blank" rel="noopener noreferrer">https://github.com/xJackSx/BSPWMparrot</a></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="bonus">Bonus<a href="https://voromir.github.io/blog/2024/05/29/setting-up#bonus" class="hash-link" aria-label="Direct link to Bonus" title="Direct link to Bonus">​</a></h2>
-<p>Neofetch and lolcat. Now that you setted up a nice terminal with your custom prompot and your favourite shell is time to show-off. Neofetch is a improved screenfetch that displays system information in a esthetic way and customizable format. You can use it if you don't remember your machine's specs or just to showcase your terminal configuration. You can edit the config in .config/neofetch/config.conf. Lolcat, on the other hand, is a modified cat that displays text in playful rainbow color. You can pipe your neofetch into it or any other thext output.</p>]]></content>
+<p>Neofetch and lolcat. Now that you setted up a nice terminal with your custom prompot and your favourite shell is time to show-off. Neofetch is a improved screenfetch that displays system information in a esthetic way and customizable format. You can use it if you don't remember your machine's specs or just to showcase your terminal configuration. You can edit the config in <code>.config/neofetch/config.conf.</code> Lolcat, on the other hand, is a modified cat that displays text in playful rainbow color. You can pipe your neofetch into it or any other thext output.</p>]]></content>
         <author>
             <name>Dani Vorobiev</name>
             <uri>https://voromir.github.io/about/</uri>

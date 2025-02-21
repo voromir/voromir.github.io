@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Terminal customization","permalink":"/blog/2024/05/29/setting-up","unlisted":false},{"title":"What is and MDX file?","permalink":"/blog/2024/05/26/mdx-trial","unlisted":false}]}')}}]);
