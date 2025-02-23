@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.3.2">
 <title data-rh="true">One post tagged with &quot;Environment&quot; | More than code</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://voromir.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://voromir.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://voromir.github.io/blog/tags/environment"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" property="og:title" content="One post tagged with &quot;Environment&quot; | More than code"><meta data-rh="true" name="docusaurus_tag" content="blog_tags_posts"><meta data-rh="true" name="docsearch:docusaurus_tag" content="blog_tags_posts"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://voromir.github.io/blog/tags/environment"><link data-rh="true" rel="alternate" href="https://voromir.github.io/blog/tags/environment" hreflang="en"><link data-rh="true" rel="alternate" href="https://voromir.github.io/blog/tags/environment" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="More than code RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="More than code Atom Feed"><link rel="stylesheet" href="/assets/css/styles.ae5656d0.css">
-<script src="/assets/js/runtime~main.8f507732.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.cf9ec619.js" defer="defer"></script>
 <script src="/assets/js/main.79e5d6d4.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -140,7 +140,18 @@ Alias expansion:</p>
 <li>Alias lookup: The shell first checks if the first word of your command matches an alias in some of your configuration files. If it does, it replaces that word with the alias&#x27;s definition. This process is known as alias expansion.</li>
 <li>Command execution</li>
 </ol>
-<p>Alias porecedence: By default, alias expansion is disabled in non-interactive shells (like scripts) to avoid unexpected behavior. But if you have both a shell function and an alias with the same name, the function will take precedence over the alias.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="alias-precedence">Alias Precedence<a href="#alias-precedence" class="hash-link" aria-label="Direct link to Alias Precedence" title="Direct link to Alias Precedence">​</a></h3>
+<p>By default, alias expansion is disabled in non-interactive shells (like scripts) to avoid unexpected behavior. However, if you have both a shell function and an alias with the same name, the alias will take precedence over the function.</p>
+<p>The order of precedence is:</p>
+<ul>
+<li>Aliases (highest precedence)</li>
+<li>Shell functions</li>
+<li>Built-in commands (like echo, cd, etc.)</li>
+<li>Programs in PATH (executables)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="a-gotcha-with-oh-my-zsh-and-auto_cd">A Gotcha with Oh My Zsh and AUTO_CD<a href="#a-gotcha-with-oh-my-zsh-and-auto_cd" class="hash-link" aria-label="Direct link to A Gotcha with Oh My Zsh and AUTO_CD" title="Direct link to A Gotcha with Oh My Zsh and AUTO_CD">​</a></h3>
+<p>If you are using Oh My Zsh or Zsh with AUTO_CD enabled, and you try to enter a directory by typing its name (e.g., git), but there is a program with the same name (e.g., /opt/homebrew/bin/git), the program will be executed instead of changing directories.</p>
+<p>This happens because Zsh prioritizes executables in your PATH over the auto-cd feature. To access a directory that shares a name with a program in your PATH, you must use the cd command explicitly. Alternatively, you can disable the AUTO_CD feature by running <code>unsetopt AUTO_CD</code>.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="automate-it-in-a-script">Automate it in a script<a href="#automate-it-in-a-script" class="hash-link" aria-label="Direct link to Automate it in a script" title="Direct link to Automate it in a script">​</a></h2>
 <p>As you can see, it&#x27;s a long process. But, if you have a configuration that you really like, you can automate it.
 There are multiple scripts on the internet for personalization, like this one for Parrot Linux with bspwm: <a href="https://github.com/xJackSx/BSPWMparrot" target="_blank" rel="noopener noreferrer">https://github.com/xJackSx/BSPWMparrot</a></p>
