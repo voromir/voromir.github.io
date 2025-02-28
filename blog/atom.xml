@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://voromir.github.io/blog</id>
-    <title>More than code Blog</title>
+    <title>Dev journey Blog</title>
     <updated>2024-05-29T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://voromir.github.io/blog"/>
-    <subtitle>More than code Blog</subtitle>
+    <subtitle>Dev journey Blog</subtitle>
     <icon>https://voromir.github.io/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Terminal customization]]></title>
