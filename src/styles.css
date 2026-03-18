@@ -31,7 +31,39 @@ button {
 
 .app {
   min-height: 100vh;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  position: relative;
+}
+
+.app::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.theme-tiles-transitioning .feature-card,
+.theme-tiles-transitioning .list-card,
+.theme-tiles-transitioning .article-card,
+.theme-tiles-transitioning .feature-card *,
+.theme-tiles-transitioning .list-card *,
+.theme-tiles-transitioning .article-card * {
+  transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.theme-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  visibility: hidden;
+  background-color: var(--base-300);
+  will-change: clip-path;
 }
 
 .skin-classic {
@@ -72,6 +104,8 @@ button {
 .page {
   min-height: 100vh;
   padding: 1rem;
+  position: relative;
+  z-index: 3;
 }
 
 .experience-modal-backdrop {
@@ -712,6 +746,10 @@ button {
   flex: none;
   opacity: 0.72;
   filter: brightness(0) invert(1);
+}
+
+.theme-silk .cta-logo {
+  filter: brightness(0) invert(0.3);
 }
 
 .cta-logo-github {

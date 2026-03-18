@@ -689,14 +689,14 @@ function childrenOrLabel(item) {
   return item.label;
 }
 
-function ThemeToggle({ theme, setTheme }) {
+function ThemeToggle({ theme, onToggleClick }) {
   return (
     <div className="theme-toggle">
       <button
         aria-label={theme === "dim" ? "Switch to light theme" : "Switch to dark theme"}
         aria-pressed={theme === "silk"}
         className={`theme-slider ${theme === "silk" ? "light" : "dark"}`}
-        onClick={() => setTheme(theme === "dim" ? "silk" : "dim")}
+        onClick={onToggleClick}
         type="button"
       >
         <span className="theme-slider-track">
@@ -725,7 +725,7 @@ function ThemeToggle({ theme, setTheme }) {
   );
 }
 
-function ThemeControls({ theme, setTheme, uiStyle, setUiStyle }) {
+function ThemeControls({ theme, onThemeToggle, uiStyle, setUiStyle }) {
   const [open, setOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
   const panelRef = useRef(null);
@@ -755,7 +755,7 @@ function ThemeControls({ theme, setTheme, uiStyle, setUiStyle }) {
 
   return (
     <div className="theme-controls" ref={panelRef}>
-      <ThemeToggle setTheme={setTheme} theme={theme} />
+      <ThemeToggle onToggleClick={onThemeToggle} theme={theme} />
       <div className="settings-panel-wrap">
         <button
           aria-expanded={open}
@@ -887,8 +887,8 @@ function HeaderControls({
   navigate,
   onBack,
   onForward,
+  onThemeToggle,
   route,
-  setTheme,
   setUiStyle,
   scrolled,
   theme,
@@ -906,7 +906,7 @@ function HeaderControls({
         <Breadcrumbs navigate={navigate} route={route} />
       </div>
       <ThemeControls
-        setTheme={setTheme}
+        onThemeToggle={onThemeToggle}
         setUiStyle={setUiStyle}
         theme={theme}
         uiStyle={uiStyle}
@@ -1520,6 +1520,10 @@ function App() {
   );
   const [route, setRoute] = useState(() => getRouteFromHash());
   const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const [tilesTransitioning, setTilesTransitioning] = useState(false);
+  const appRef = useRef(null);
+  const overlayRef = useRef(null);
+  const isAnimatingRef = useRef(false);
   const [historyState, setHistoryState] = useState(() => ({
     entries: [window.location.hash || "#inicio"],
     index: 0
@@ -1668,8 +1672,52 @@ function App() {
     navigate(nextRoute.page, "forward", nextRoute.slug);
   };
 
+  const handleThemeToggle = (event) => {
+    if (isAnimatingRef.current) return;
+
+    const nextTheme = theme === "dim" ? "silk" : "dim";
+    const btn = event.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const maxRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const overlay = overlayRef.current;
+    overlay.className = `theme-transition-overlay theme-${nextTheme} skin-${uiStyle}`;
+    overlay.style.clipPath = `circle(0px at ${x}px ${y}px)`;
+    overlay.style.visibility = "visible";
+
+    // Lock the app background so it doesn't jump when setTheme fires early
+    const app = appRef.current;
+    app.style.background = getComputedStyle(app).backgroundColor;
+
+    isAnimatingRef.current = true;
+
+    // Start tile transition partway through the ripple
+    setTimeout(() => {
+      setTheme(nextTheme);
+      setTilesTransitioning(true);
+      setTimeout(() => setTilesTransitioning(false), 600);
+    }, 300);
+
+    gsap.to(overlay, {
+      clipPath: `circle(${maxRadius}px at ${x}px ${y}px)`,
+      duration: 0.55,
+      ease: "power2.inOut",
+      onComplete: () => {
+        app.style.background = "";
+        overlay.style.visibility = "hidden";
+        isAnimatingRef.current = false;
+      }
+    });
+  };
+
   return (
-    <div className={`app theme-${theme} skin-${uiStyle}`}>
+    <div ref={appRef} className={`app theme-${theme} skin-${uiStyle}${tilesTransitioning ? " theme-tiles-transitioning" : ""}`}>
+      <div ref={overlayRef} className="theme-transition-overlay" />
       {showExperienceModal ? (
         <ExperienceModal
           onSelect={(style) => {
@@ -1686,8 +1734,8 @@ function App() {
           onBack={handleBack}
           onForward={handleForward}
           route={route}
+          onThemeToggle={handleThemeToggle}
           scrolled={showStickyHeader}
-          setTheme={setTheme}
           setUiStyle={setUiStyle}
           theme={theme}
           uiStyle={uiStyle}
