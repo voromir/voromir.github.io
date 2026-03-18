@@ -540,15 +540,7 @@ function getHashForPage(page, slug) {
   return "#inicio";
 }
 
-function getBrowserTint(uiStyle, theme) {
-  if (uiStyle === "classic" && theme === "silk") {
-    return "#e8e2cf";
-  }
-
-  if (uiStyle === "classic" && theme === "dim") {
-    return "#355d97";
-  }
-
+function getBrowserTint(theme) {
   if (theme === "silk") {
     return "#e9e2dc";
   }
@@ -725,8 +717,7 @@ function ThemeToggle({ theme, onToggleClick }) {
   );
 }
 
-function ThemeControls({ theme, onThemeToggle, uiStyle, setUiStyle }) {
-  const [open, setOpen] = useState(false);
+function ThemeControls({ theme, onThemeToggle }) {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const panelRef = useRef(null);
 
@@ -736,7 +727,6 @@ function ThemeControls({ theme, onThemeToggle, uiStyle, setUiStyle }) {
         return;
       }
 
-      setOpen(false);
       setTerminalOpen(false);
     };
 
@@ -756,58 +746,12 @@ function ThemeControls({ theme, onThemeToggle, uiStyle, setUiStyle }) {
   return (
     <div className="theme-controls" ref={panelRef}>
       <ThemeToggle onToggleClick={onThemeToggle} theme={theme} />
-      <div className="settings-panel-wrap">
-        <button
-          aria-expanded={open}
-          aria-label="Open theme settings"
-          className={`settings-button ${open ? "active" : ""}`}
-          onClick={() => {
-            setOpen((value) => !value);
-            setTerminalOpen(false);
-          }}
-          type="button"
-        >
-          <Icon className="icon-sm">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01A1.65 1.65 0 0 0 9.91 3H10a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-          </Icon>
-        </button>
-
-        {open ? (
-          <div className="settings-menu">
-            <p className="settings-title">Visual style</p>
-            <button
-              className={`settings-option ${uiStyle === "modern" ? "selected" : ""}`}
-              onClick={() => {
-                setUiStyle("modern");
-                setOpen(false);
-              }}
-              type="button"
-            >
-              <span>Modern</span>
-              <small>Current clean theme</small>
-            </button>
-            <button
-              className={`settings-option ${uiStyle === "classic" ? "selected" : ""}`}
-              onClick={() => {
-                setUiStyle("classic");
-                setOpen(false);
-              }}
-              type="button"
-            >
-              <span>Classic</span>
-              <small>Windows XP inspired</small>
-            </button>
-          </div>
-        ) : null}
-      </div>
       <button
         aria-expanded={terminalOpen}
         aria-label="Open Reader's corner"
         className={`settings-button terminal-trigger ${terminalOpen ? "active" : ""}`}
         onClick={() => {
           setTerminalOpen((value) => !value);
-          setOpen(false);
         }}
         type="button"
       >
@@ -859,28 +803,6 @@ function ThemeControls({ theme, onThemeToggle, uiStyle, setUiStyle }) {
   );
 }
 
-function ExperienceModal({ onSelect }) {
-  return (
-    <div className="experience-modal-backdrop">
-      <div className="experience-modal">
-        <p className="feature-kicker">Welcome</p>
-        <h2>Select your experience</h2>
-        <p className="feature-text">
-          Choose the visual style you want to use across the site.
-        </p>
-        <div className="experience-actions">
-          <button className="cta-secondary experience-button" onClick={() => onSelect("classic")} type="button">
-            Classic
-          </button>
-          <button className="cta-primary experience-button" onClick={() => onSelect("modern")} type="button">
-            Modern
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function HeaderControls({
   canGoBack,
   canGoForward,
@@ -889,10 +811,8 @@ function HeaderControls({
   onForward,
   onThemeToggle,
   route,
-  setUiStyle,
   scrolled,
-  theme,
-  uiStyle
+  theme
 }) {
   return (
     <div className={`topbar ${scrolled ? "topbar-scrolled" : ""}`}>
@@ -907,9 +827,7 @@ function HeaderControls({
       </div>
       <ThemeControls
         onThemeToggle={onThemeToggle}
-        setUiStyle={setUiStyle}
         theme={theme}
-        uiStyle={uiStyle}
       />
     </div>
   );
@@ -1514,10 +1432,6 @@ function Footer() {
 
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem("voro-color-theme") || "dim");
-  const [uiStyle, setUiStyle] = useState(() => localStorage.getItem("voro-ui-style") || "modern");
-  const [showExperienceModal, setShowExperienceModal] = useState(
-    () => !localStorage.getItem("voro-ui-style")
-  );
   const [route, setRoute] = useState(() => getRouteFromHash());
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [tilesTransitioning, setTilesTransitioning] = useState(false);
@@ -1575,15 +1489,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("voro-ui-style", uiStyle);
-  }, [uiStyle]);
-
-  useEffect(() => {
     localStorage.setItem("voro-color-theme", theme);
   }, [theme]);
 
   useEffect(() => {
-    const tint = getBrowserTint(uiStyle, theme);
+    const tint = getBrowserTint(theme);
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     const appleStatusBarMeta = document.querySelector(
       'meta[name="apple-mobile-web-app-status-bar-style"]'
@@ -1599,7 +1509,7 @@ function App() {
 
     document.documentElement.style.backgroundColor = tint;
     document.body.style.backgroundColor = tint;
-  }, [theme, uiStyle]);
+  }, [theme]);
 
   const navigate = (page, mode = "push", slug) => {
     const nextHash = getHashForPage(page, slug);
@@ -1686,7 +1596,7 @@ function App() {
     );
 
     const overlay = overlayRef.current;
-    overlay.className = `theme-transition-overlay theme-${nextTheme} skin-${uiStyle}`;
+    overlay.className = `theme-transition-overlay theme-${nextTheme}`;
     overlay.style.clipPath = `circle(0px at ${x}px ${y}px)`;
     overlay.style.visibility = "visible";
 
@@ -1716,16 +1626,8 @@ function App() {
   };
 
   return (
-    <div ref={appRef} className={`app theme-${theme} skin-${uiStyle}${tilesTransitioning ? " theme-tiles-transitioning" : ""}`}>
+    <div ref={appRef} className={`app theme-${theme}${tilesTransitioning ? " theme-tiles-transitioning" : ""}`}>
       <div ref={overlayRef} className="theme-transition-overlay" />
-      {showExperienceModal ? (
-        <ExperienceModal
-          onSelect={(style) => {
-            setUiStyle(style);
-            setShowExperienceModal(false);
-          }}
-        />
-      ) : null}
       <main className="page">
         <HeaderControls
           canGoBack={canGoBack}
@@ -1736,9 +1638,7 @@ function App() {
           route={route}
           onThemeToggle={handleThemeToggle}
           scrolled={showStickyHeader}
-          setUiStyle={setUiStyle}
           theme={theme}
-          uiStyle={uiStyle}
         />
         {content}
         <Footer />
