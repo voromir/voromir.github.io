@@ -1,41 +1,21 @@
-# Website
-
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
-
-### Installation
-
-```
-$ yarn
+```text
+__     ______  ____   ___      ____  _      ___   ____ 
+\ \   / / __ \|  _ \ / _ \    | __ )| |    / _ \ / ___|
+ \ \ / / |  | | |_) | | | |   |  _ \| |   | | | | |  _ 
+  \ V /| |__| |  _ <| |_| |   | |_) | |___| |_| | |_| |
+   \_/  \____/|_| \_\\___/    |____/|_____|\___/ \____|
 ```
 
-### Local Development
+# Voro Blog
 
+This is my personal landing page. 👨‍💻
+
+I built it with React because it is the framework I am most used to working with, and it lets me iterate quickly on UI, navigation, and content structure. ⚛️
+
+You can reuse this codebase as a starting point for your own personal site or side project. 🚀
+
+Or download my CV from the console:
+
+```bash
+curl https://voro.blog/cv.txt
 ```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

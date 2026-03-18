@@ -1,0 +1,18 @@
+John Doe — Software Engineer
+Barcelona, Spain
+
+Email: john@doe.com
+Website: https://mysite.dev
+GitHub: https://github.com/johndoe
+
+Experience
+----------
+Senior Backend Engineer — ACME (2022–Present)
+- Built distributed APIs in Go
+- Reduced latency by 35%
+
+Backend Developer — XYZ (2019–2022)
+
+Skills
+------
+Go | Python | React | Kubernetes | AWS

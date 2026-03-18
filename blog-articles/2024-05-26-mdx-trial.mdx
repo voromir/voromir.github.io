@@ -1,0 +1,65 @@
+---
+authors: [dani]
+tags: [mdx, markdown, docusaurus]
+---
+
+import BouncingBall from "../src/components/BouncingBall";
+import LiveCodeExample from "../src/components/LiveCodeExample";
+
+# What is and MDX file?
+
+## Empowering the text
+
+Markdown is a tool that allows you to write using an easy-to-write plain text format, that is converted to structurally valid HTML.
+Originally, it was intended to easly create content for the web. And it does it great. It's very intuitive so you can start using it just after learning the basic syntax.
+Once you write your plain text with proper Markdown syntax, the Markdown parser will convert it into valid HTML that reflects the intended layout and style.
+And lots of great platforms are powered by markdown syntax: Obsidian, Trello, Notion, Stack Overflow, GitHub,
+Jekyll, Docusaurus and much more. So if you're getting in the software development world, you will be using
+markdown for sure.
+
+With Markdown youcan write text, lists, tables, code blocks, images, links, and much more. Let's put here
+an example of each one:
+
+> Text that is a quote
+
+1. First item
+2. Second item
+
+```javascript
+console.log("Hello, world!");
+```
+
+[Docusaurus](https://docusaurus.io) is a project for easily building, deploying, and maintaining open source project websites.
+
+These are some of the basic features of markdown. But there's much more. You can finde more detailed information
+in the [Markdown Guide](https://www.markdownguide.org/) and in the [GitHub Markdown Guide](https://guides.github.com/features/mastering-markdown/).
+
+## From MD to MDX
+
+But what if you want to add some interactivity to your markdown file? You can use MDX for that. MDX is a markdown
+file that can contain JSX code. Isn't that great? If you use React, you know that JSX is a syntax extension for JavaScript that allows you to write HTML elements
+inside your JavaScript code. Once you get used to it, it gets really easy to write pages with this syntax. So with the MDX basically you can write React
+components inside your markdown file. Here goes an example:
+
+<BouncingBall />
+
+Which in the code looks like this:
+
+```jsx
+import BouncingBall from "../src/components/BouncingBall";
+
+// All the markdown content
+
+<BouncingBall />;
+```
+
+Basically, you just import the component and use it as you would use it in a React component. You can also declare variables and pass props to the components.
+So you can create a very interactive page with just a markdown file.
+
+## More cool stuff!
+
+Being able to use JSX in markdown files gives you a lot of power. You can create almost anything you want. You can create a live code editor, for example. Let's have a look:
+
+<LiveCodeExample />
+
+How cool is that? You can write code and see the result in real-time. And you can do this in a markdown file.
