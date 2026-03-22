@@ -636,6 +636,10 @@ button {
   margin-top: 1.5rem;
 }
 
+.cta-row-end {
+  justify-content: flex-end;
+}
+
 .cta-primary,
 .cta-secondary,
 .text-link {
@@ -919,6 +923,11 @@ button {
   margin-bottom: 0;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.about-copy .console-note-stacked {
+  display: grid;
+  justify-items: start;
 }
 
 .console-note code {

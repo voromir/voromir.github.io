@@ -877,86 +877,121 @@ function NavLink({ children, className, page, navigate, slug }) {
   );
 }
 
-function HomePage({ navigate }) {
-  const [selectedFilter, setSelectedFilter] = useState("AI");
-  const previewEntries = blogEntries
-    .filter((entry) => entry.source === "markdown")
-    .filter((entry) => !selectedFilter || entry.tags.some((tag) => tag.toUpperCase() === selectedFilter))
-    .slice(0, 3);
+function AboutContent({ navigate, separateConsoleLines = false, showProfileButton = false }) {
+  return (
+    <>
+      <div className="section-heading">
+        <p className="feature-kicker">About Me</p>
+        <h1>Dani Vorobiev</h1>
+      </div>
 
+      <div className="about-layout">
+        <div className="about-avatar">
+          <img alt="Dani Voro" src="/Voro-profile.png" />
+        </div>
+        <div className="about-copy">
+          <p>
+            This page works as the personal introduction area of the site and as
+            the second main destination from Home.
+          </p>
+          <p>
+            From here you can go back to the blog, check the available entry, and
+            keep a clear navigation flow between the three main areas of the site.
+          </p>
+          <div className="cta-row">
+            <a className="cta-primary cta-with-icon download-cta" download href="/voro-cv.pdf">
+              <Icon className="icon-sm">
+                <path d="M12 3v11" />
+                <path d="m7 11 5 5 5-5" />
+                <path d="M5 21h14" />
+              </Icon>
+              <span>
+                Download CV
+              </span>
+            </a>
+            <a
+              className="cta-secondary cta-with-icon"
+              href="https://www.linkedin.com/in/daniil-vorobiev/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <img alt="" aria-hidden="true" className="cta-logo" src="/linkedin-logo-transparent.png" />
+              <span>LinkedIn</span>
+            </a>
+            <a
+              className="cta-secondary cta-with-icon"
+              href="https://github.com/voromir"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <img alt="" aria-hidden="true" className="cta-logo cta-logo-github" src="/github-logo-transparent.png" />
+              <span>GitHub</span>
+            </a>
+          </div>
+          <p className={`console-note${separateConsoleLines ? " console-note-stacked" : ""}`}>
+            <span>Download my CV from the console:</span>
+            <code className="typing-command">
+              <span className="typing-command-text">curl https://voro.blog/cv.txt</span>
+              <span aria-hidden="true" className="typing-cursor" />
+            </code>
+          </p>
+        </div>
+      </div>
+
+      <div className="about-cards">
+        <article className="feature-card compact-card detail-card">
+          <p className="feature-kicker">Ocado</p>
+          <h2>My contributions at Ocado</h2>
+          <p className="feature-text">{ocadoContributionSummary}</p>
+          <NavLink
+            className="text-link"
+            navigate={navigate}
+            page="ocado-contributions"
+          >
+            Read full details
+          </NavLink>
+        </article>
+
+        <article className="feature-card compact-card detail-card">
+          <p className="feature-kicker">Projects</p>
+          <h2>Selected projects</h2>
+          <p className="feature-text">
+            Personal projects and experiments, from language learning tools to
+            music and sports utilities.
+          </p>
+          <NavLink className="text-link" navigate={navigate} page="projects">
+            Open projects
+          </NavLink>
+        </article>
+      </div>
+
+      {showProfileButton ? (
+        <div className="cta-row cta-row-end">
+          <NavLink className="cta-secondary" navigate={navigate} page="about">
+            View full profile
+          </NavLink>
+        </div>
+      ) : null}
+    </>
+  );
+}
+
+function HomePage({ navigate }) {
+  
   return (
     <section className="landing-grid">
       <article className="feature-card hero-feature">
-        <div className="hero-feature-body">
-          <p className="feature-kicker">Blog</p>
-          <h1>Blog</h1>
-          <p className="feature-text">
-            Notes, interesting finds, and lessons learned during my engineering journey.
-          </p>
-          <div className="blog-preview-filters">
-            {homeBlogFilters.map((filter) => (
-              <button
-                className={selectedFilter === filter.tag ? "active" : ""}
-                key={filter.tag}
-                onClick={() => setSelectedFilter(filter.tag)}
-                type="button"
-              >
-                {filter.label}
-              </button>
-            ))}
-            <button
-              className={!selectedFilter ? "active" : ""}
-              onClick={() => setSelectedFilter(null)}
-              type="button"
-            >
-              All
-            </button>
-          </div>
-          <div className="blog-preview-list">
-            {previewEntries.length > 0 ? (
-              previewEntries.map((entry) => (
-                <button
-                  className="blog-preview-card"
-                  key={entry.slug}
-                  onClick={() => navigate("article", "push", entry.slug)}
-                  type="button"
-                >
-                  <div className="blog-preview-meta">
-                    <span>{entry.date}</span>
-                    <span>{entry.readTime}</span>
-                  </div>
-                  <h3>{entry.title}</h3>
-                  <p>{entry.summary}</p>
-                </button>
-              ))
-            ) : (
-              <div className="blog-preview-empty">No entries found for this filter yet.</div>
-            )}
-          </div>
-        </div>
-        <div className="cta-row">
-          <NavLink className="cta-primary" navigate={navigate} page="blog">
-            See all entries
-          </NavLink>
-          <NavLink className="cta-secondary" navigate={navigate} page="about">
-            About me
-          </NavLink>
-        </div>
+        <AboutContent navigate={navigate} separateConsoleLines showProfileButton />
       </article>
 
       <article className="feature-card compact-card">
-        <p className="feature-kicker">About Me</p>
-        <h2>Introduction</h2>
-        <div className="compact-profile-row">
-          <div className="compact-profile-avatar">
-            <img alt="Dani Voro" src="/Voro-profile.png" />
-          </div>
-          <p className="feature-text compact-profile-text">
-            Quick access point to a short personal introduction inside the site.
-          </p>
-        </div>
-        <NavLink className="cta-secondary compact-cta" navigate={navigate} page="about">
-          Open profile
+        <p className="feature-kicker">Blog</p>
+        <h2>Latest entries</h2>
+        <p className="feature-text">
+          Notes, interesting finds, and lessons learned during my engineering journey.
+        </p>
+        <NavLink className="cta-secondary compact-cta" navigate={navigate} page="blog">
+          Open blog
         </NavLink>
       </article>
 
@@ -1025,88 +1060,7 @@ function BlogPage({ navigate }) {
 function AboutPage({ navigate }) {
   return (
     <section className="list-card">
-      <div className="section-heading">
-        <p className="feature-kicker">About Me</p>
-        <h1>Dani Vorobiev</h1>
-      </div>
-
-      <div className="about-layout">
-        <div className="about-avatar">
-          <img alt="Dani Voro" src="/Voro-profile.png" />
-        </div>
-        <div className="about-copy">
-          <p>
-            This page works as the personal introduction area of the site and as
-            the second main destination from Home.
-          </p>
-          <p>
-            From here you can go back to the blog, check the available entry, and
-            keep a clear navigation flow between the three main areas of the site.
-          </p>
-          <div className="cta-row">
-            <a className="cta-primary cta-with-icon download-cta" download href="/voro-cv.pdf">
-              <Icon className="icon-sm">
-                <path d="M12 3v11" />
-                <path d="m7 11 5 5 5-5" />
-                <path d="M5 21h14" />
-              </Icon>
-              <span>
-                Download CV
-              </span>
-            </a>
-            <a
-              className="cta-secondary cta-with-icon"
-              href="https://www.linkedin.com/in/daniil-vorobiev/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <img alt="" aria-hidden="true" className="cta-logo" src="/linkedin-logo-transparent.png" />
-              <span>LinkedIn</span>
-            </a>
-            <a
-              className="cta-secondary cta-with-icon"
-              href="https://github.com/voromir"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <img alt="" aria-hidden="true" className="cta-logo cta-logo-github" src="/github-logo-transparent.png" />
-              <span>GitHub</span>
-            </a>
-          </div>
-          <p className="console-note">
-            <span>Or download my CV from the console:</span>
-            <code className="typing-command">
-              <span className="typing-command-text">curl https://voro.blog/cv.txt</span>
-              <span aria-hidden="true" className="typing-cursor" />
-            </code>
-          </p>
-        </div>
-      </div>
-
-      <div className="about-cards">
-        <article className="feature-card compact-card detail-card">
-        <p className="feature-kicker">Ocado</p>
-        <h2>My contributions at Ocado</h2>
-        <p className="feature-text">{ocadoContributionSummary}</p>
-          <NavLink
-            className="text-link"
-            navigate={navigate}
-            page="ocado-contributions"
-          >
-            Read full details
-          </NavLink>
-        </article>
-
-        <article className="feature-card compact-card detail-card">
-        <p className="feature-kicker">Work Style</p>
-        <h2>Ownership, learning, collaboration</h2>
-          <p className="feature-text">
-            I usually contribute by spotting risks early, learning fast across
-            domains, documenting clearly, and making systems easier for others
-            to work with.
-          </p>
-        </article>
-      </div>
+      <AboutContent navigate={navigate} />
 
       <section className="certifications-section">
         <div className="section-heading">
