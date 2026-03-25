@@ -877,7 +877,7 @@ function NavLink({ children, className, page, navigate, slug }) {
   );
 }
 
-function AboutContent({ navigate, separateConsoleLines = false, showProfileButton = false }) {
+function AboutContent({ navigate, separateConsoleLines = false, showProfileButton = false, landing = false }) {
   return (
     <>
       <div className="section-heading">
@@ -886,7 +886,7 @@ function AboutContent({ navigate, separateConsoleLines = false, showProfileButto
       </div>
 
       <div className="about-layout">
-        <div className="about-avatar">
+        <div className={`about-avatar${landing ? " landing-about-avatar" : ""}`}>
           <img alt="Dani Voro" src="/Voro-profile.png" />
         </div>
         <div className="about-copy">
@@ -981,7 +981,7 @@ function HomePage({ navigate }) {
   return (
     <section className="landing-grid">
       <article className="feature-card hero-feature">
-        <AboutContent navigate={navigate} separateConsoleLines showProfileButton />
+        <AboutContent navigate={navigate} separateConsoleLines showProfileButton landing />
       </article>
 
       <article className="feature-card compact-card">
