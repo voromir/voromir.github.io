@@ -1004,7 +1004,7 @@ function HomePage({ navigate }) {
       </article>
 
       <article className="feature-card compact-card">
-        <h2>Cool projects</h2>
+        <h2>Latest projects</h2>
         <p className="feature-text">
           A selection of personal projects and experiments, organized on a
           separate page.
