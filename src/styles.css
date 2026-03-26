@@ -497,6 +497,10 @@ button {
   letter-spacing: -0.025em;
 }
 
+.profile-title {
+  color: #7582ff;
+}
+
 .compact-card h2,
 .post-row h2 {
   font-size: 1.75rem;

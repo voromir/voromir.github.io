@@ -877,12 +877,17 @@ function NavLink({ children, className, page, navigate, slug }) {
   );
 }
 
-function AboutContent({ navigate, separateConsoleLines = false, showProfileButton = false, landing = false }) {
+function AboutContent({
+  navigate,
+  separateConsoleLines = false,
+  showConsoleNote = true,
+  showProfileButton = false,
+  landing = false
+}) {
   return (
     <>
       <div className="section-heading">
-        <p className="feature-kicker">About Me</p>
-        <h1>Dani Vorobiev</h1>
+        <h1 className="profile-title">Dani Vorobiev</h1>
       </div>
 
       <div className="about-layout">
@@ -891,7 +896,10 @@ function AboutContent({ navigate, separateConsoleLines = false, showProfileButto
         </div>
         <div className="about-copy">
           <p>
-         My name is Dani, but you can call me Voro. I’m a frontend developer with experience in building large-scale e-commerce solutions. Passionate about AI and always learning about the latest tools. In my free time, I use code to create music.
+         My name is Dani, but you can call me Voro. I’m a frontend developer with experience in building large-scale e-commerce solutions. Lately I've been working on Accessibility, Experimentation and AI tool integration.
+          </p>
+           <p>
+           In my free time, I use code to create music and playful projects. When I'm not coding, I’m training for a triathlon.
           </p>
           <div className="cta-row">
             <a className="cta-primary cta-with-icon download-cta" download href="/voro-cv.pdf">
@@ -923,19 +931,20 @@ function AboutContent({ navigate, separateConsoleLines = false, showProfileButto
               <span>GitHub</span>
             </a>
           </div>
-          <p className={`console-note${separateConsoleLines ? " console-note-stacked" : ""}`}>
-            <span>Download my CV from the console:</span>
-            <code className="typing-command">
-              <span className="typing-command-text">curl https://voro.blog/cv.txt</span>
-              <span aria-hidden="true" className="typing-cursor" />
-            </code>
-          </p>
+          {showConsoleNote ? (
+            <p className={`console-note${separateConsoleLines ? " console-note-stacked" : ""}`}>
+              <span>Download my CV from the console:</span>
+              <code className="typing-command">
+                <span className="typing-command-text">curl https://voro.blog/cv.txt</span>
+                <span aria-hidden="true" className="typing-cursor" />
+              </code>
+            </p>
+          ) : null}
         </div>
       </div>
 
       <div className="about-cards">
         <article className="feature-card compact-card detail-card">
-          <p className="feature-kicker">Ocado</p>
           <h2>My contributions at Ocado</h2>
           <p className="feature-text">{ocadoContributionSummary}</p>
           <NavLink
@@ -948,7 +957,6 @@ function AboutContent({ navigate, separateConsoleLines = false, showProfileButto
         </article>
 
         <article className="feature-card compact-card detail-card">
-          <p className="feature-kicker">Projects</p>
           <h2>Selected projects</h2>
           <p className="feature-text">
             Personal projects and experiments, from language learning tools to
@@ -976,11 +984,16 @@ function HomePage({ navigate }) {
   return (
     <section className="landing-grid">
       <article className="feature-card hero-feature">
-        <AboutContent navigate={navigate} separateConsoleLines showProfileButton landing />
+        <AboutContent
+          navigate={navigate}
+          separateConsoleLines
+          showConsoleNote={false}
+          showProfileButton
+          landing
+        />
       </article>
 
       <article className="feature-card compact-card">
-        <p className="feature-kicker">Blog</p>
         <h2>Latest entries</h2>
         <p className="feature-text">
           Notes, interesting finds, and lessons learned during my engineering journey.
@@ -991,7 +1004,6 @@ function HomePage({ navigate }) {
       </article>
 
       <article className="feature-card compact-card">
-        <p className="feature-kicker">Projects</p>
         <h2>Cool projects</h2>
         <p className="feature-text">
           A selection of personal projects and experiments, organized on a
@@ -1003,7 +1015,6 @@ function HomePage({ navigate }) {
       </article>
 
       <article className="feature-card compact-card">
-        <p className="feature-kicker">Music</p>
         <h2>Create some music!</h2>
         <p className="feature-text">
           A small playful corner for rhythm, experimentation, and future audio tools.
