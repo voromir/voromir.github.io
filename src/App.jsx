@@ -1463,6 +1463,10 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [route]);
+
+  useEffect(() => {
     const tint = getBrowserTint(theme);
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     const appleStatusBarMeta = document.querySelector(
