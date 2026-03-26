@@ -838,6 +838,24 @@ button {
   margin-top: 2rem;
 }
 
+.calendar-section {
+  margin-top: 2rem;
+}
+
+.calendar-card {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--base-200) 60%, transparent);
+}
+
+.calendar-card > * {
+  margin-inline: auto;
+}
+
 .certifications-grid {
   display: grid;
   grid-template-columns: 1fr;

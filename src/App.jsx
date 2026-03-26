@@ -5,6 +5,7 @@ import css from "highlight.js/lib/languages/css";
 import javascript from "highlight.js/lib/languages/javascript";
 import xml from "highlight.js/lib/languages/xml";
 import gsap from "gsap";
+import { GitHubCalendar } from "react-github-calendar";
 
 hljs.registerLanguage("js", javascript);
 hljs.registerLanguage("javascript", javascript);
@@ -1067,6 +1068,15 @@ function AboutPage({ navigate }) {
   return (
     <section className="list-card">
       <AboutContent navigate={navigate} />
+
+      <section className="calendar-section">
+        <div className="section-heading">
+          <p className="feature-kicker">GitHub activity</p>
+        </div>
+        <div className="calendar-card">
+          <GitHubCalendar username="voromir" />
+        </div>
+      </section>
 
       <section className="certifications-section">
         <div className="section-heading">
