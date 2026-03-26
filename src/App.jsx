@@ -891,12 +891,7 @@ function AboutContent({ navigate, separateConsoleLines = false, showProfileButto
         </div>
         <div className="about-copy">
           <p>
-            This page works as the personal introduction area of the site and as
-            the second main destination from Home.
-          </p>
-          <p>
-            From here you can go back to the blog, check the available entry, and
-            keep a clear navigation flow between the three main areas of the site.
+         My name is Dani, but you can call me Voro. I’m a frontend developer with experience in building large-scale e-commerce solutions. Passionate about AI and always learning about the latest tools. In my free time, I use code to create music.
           </p>
           <div className="cta-row">
             <a className="cta-primary cta-with-icon download-cta" download href="/voro-cv.pdf">
