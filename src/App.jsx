@@ -22,48 +22,6 @@ const markdownModules = import.meta.glob("../blog-articles/*.md", {
   import: "default"
 });
 
-const paragraphs = [
-  "It all began in 2011, when at my grandparents' house I read in the newspaper that the Programming degree was opening at UTN in Resistencia, Chaco. It was not an easy stage: while I was studying, I was also working to cover the costs of a paid degree that promised to be 'the future.'",
-  "Along that path I met Rodrigo Miro, who shared my passion for video game development. We met at a Java workshop and, thanks to his invitation to join a venture he was starting with friends, I took my first professional steps and joined Tecspro, formerly Mi Web Simple. As strange as it may sound, that was where my disorder began.",
-  "At that company Gonzalo Alonso worked alongside several members of Tecspro. With him I began a healthy competition for professional growth: he was my reference point, my teacher, and over time also my nemesis. For years I sensed a certain discomfort with my progress, small obstacles I would only fully understand much later.",
-  "After two years at Tecspro I joined the Professional Council of Economic Sciences, my first experience as a salaried employee. I stayed there for eight years. When Gonzalo resigned, I took charge of the area, built teams, and supported the growth of several people. To this day I deeply regret leaving; it is one of those decisions that teaches you something, but leaves a mark that is hard to erase.",
-  "I left the Council to take on a highly relevant role at Crombie. However, after a year I found a deeply disorganized structure and leadership that was excessively influenced by Human Resources and one of the partners. I had no personal conflicts, but I began noticing differences and obstacles similar to past experiences, though this time at an organizational level.",
-  "I decided to investigate and discovered that they were using attitudinal evaluations to condition performance, limit growth, and adjust internal metrics. I verified it myself: I paid for the professional version of the same tool, answered the tests with identical responses, and got a score of 9, while internally I had been evaluated with a 6. We had several meetings, but we never reached an agreement. In their view, I did not fit the company's mission and values. So I decided to close that chapter.",
-  "Soon after, I arrived at the company I believed, with all my heart, was the place I had always been looking for. Thanks to Fernando Bugliot, former CEO of Ceibus, I arrived indirectly at Pronto Pago. There I experienced almost three years of exponential growth.",
-  "Everything changed with the arrival of Exequiel Ledezma. I was working together with Felipe Azcoaga, a colleague and friend whom I had first supported at the Council and later at Ceibus. During a sprint, a conflict arose over missed deadlines; from my perspective, it was not due to a lack of commitment on our side, but to disorganization in the technical leadership.",
-  "We had a tense but necessary meeting with Fernando, where I presented evidence and, apparently, the situation was resolved in our favor. However, that was not well received. I still have messages in which I was criticized for speaking directly with leadership and told never again to 'go over' the technical leadership.",
-  "In the middle of all this I started a family, moved in with my partner, rented an apartment, and began building my own house. I must have done something right.",
-  "I had never had personal conflicts; I always prioritized work, transparency, and realistic outcomes. Later we had another meeting with everyone and agreed to put the episode behind us. I made it clear that my only intention was to protect my work, Felipe's work, and the company's interests, not to create enemies. But revenge would come later.",
-  "Months after taking over as general manager of Pronto Pago, Fernando resigned from both the company and Ceibus. His departure left an important void, and I sensed my days there were numbered. Four months later, Exequiel terminated my contract.",
-  "I left the apartment and part of the life that had been growing steadily. I moved into my house, which I had managed to finish with my savings, and opened a neighborhood kiosk.",
-  "The experiences that followed were not particularly relevant to my professional development: most of them were contractor roles focused on features rather than real growth. However, the last two had a major impact on my health.",
-  "The second to last was WeTak. I arrived again through contact with former Tecspro colleagues to cover Fabián's departure. The company had its lights and shadows, even some similarities with Crombie. This time my relationship with Gonzalo was not good, which limited my real contribution and put my relationship with the CEO, my reputation, and my professional confidence at risk.",
-  "Finally, I decided to resign to stay with an opportunity at Galicia, my second experience as a salaried employee, though this time through a consultancy: OneInfo Consulting. I was betting on stability and projection. However, after six months I was dismissed under the argument of being in a 'trial period.' There had never been clear signs or transparency from the beginning; had there been, I would not have made previous decisions, because I had the chance to choose.",
-  "Since then I have not managed to re-enter the job market in the middle of the AI bubble. I tried several personal projects and, so far, the only thing truly sustaining me is a market system I developed to manage my own kiosk. Thanks to it I have been surviving for months, and it is what I plan to dedicate my full time to now.",
-  "While going through all this, my loyal friend Martín, my rabbit, was always by my side. I set out to give him everything I could, everything he deserved, and I am convinced that I did, until today. Today I had to make a devastating decision: use the money I had left for my daughter's studies or take him to the vet, knowing I could not postpone it any longer. And I lost him.",
-  "I feel that I failed. I feel that, at some point, I made the wrong decisions. That maybe, instead of continuing to try to re-enter the industry, I should have gone out to drive Uber or do anything else so I would not have had to choose.",
-  "I know many people will say: 'it's just a pet.' But that is not what this is about. It is about the commitments one takes on in life. About the quiet promise you make to yourself when you commit to care, support, and be there.",
-  "Today I feel I failed at that. That I am failing myself. That, in some way, I am also failing those who depend on me.",
-  "That is why I make this decision. I am stepping away from something I loved, not out of resentment, but out of responsibility. To rebuild myself. To build something better.",
-  "And if someday you find me again, it will be in another role, from another perspective, with another initiative."
-];
-
-const sectionBreaks = {
-  4: "And from there, everything started to fall apart.",
-  17: "Today is a very difficult day for me."
-};
-
-const blogEntry = {
-  slug: "my-story",
-  title: "My Story",
-  headline: "I have decided to stop programming…",
-  category: "Personal Chronicle",
-  summary:
-    "A personal chronicle about work, difficult decisions, and rebuilding a new stage.",
-  date: "27 Feb, 2026",
-  readTime: "15 min read"
-};
-
 const blogSections = [
   "AI development",
   "Frontend development",
@@ -426,36 +384,7 @@ function getMarkdownEntries() {
     .sort((left, right) => right.isoDate.localeCompare(left.isoDate));
 }
 
-function buildStoryBlocks() {
-  const blocks = [{ type: "lead", text: "My tragic story" }];
-
-  paragraphs.forEach((paragraph, index) => {
-    if (sectionBreaks[index]) {
-      blocks.push({ type: "heading", level: 2, text: sectionBreaks[index] });
-    }
-
-    blocks.push({ type: "paragraph", text: paragraph });
-  });
-
-  blocks.push({
-    type: "note",
-    text: "This post will be deleted automatically on April 1st, 2026..."
-  });
-
-  return blocks;
-}
-
-const manualStoryEntry = {
-  ...blogEntry,
-  isoDate: "2026-02-27",
-  author: "Maximiliano Sh.",
-  role: "Developer",
-  tags: [],
-  blocks: buildStoryBlocks(),
-  source: "manual"
-};
-
-const blogEntries = [manualStoryEntry, ...getMarkdownEntries()].sort((left, right) =>
+const blogEntries = getMarkdownEntries().sort((left, right) =>
   right.isoDate.localeCompare(left.isoDate)
 );
 
@@ -535,7 +464,7 @@ function getHashForPage(page, slug) {
   }
 
   if (page === "article") {
-    return `#blog/${slug || blogEntry.slug}`;
+    return `#blog/${slug || blogEntries[0]?.slug || ""}`;
   }
 
   return "#inicio";
