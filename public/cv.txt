@@ -1,18 +1,58 @@
-John Doe — Software Engineer
+Dani Vorobiev — Frontend Software Engineer · eCommerce & AI
 Barcelona, Spain
 
-Email: john@doe.com
-Website: https://mysite.dev
-GitHub: https://github.com/johndoe
+Email:    voro@voro.blog
+LinkedIn: linkedin.com/in/daniilvorobiev
 
-Experience
+Frontend developer and full-stack explorer with 3+ years building high-conversion eCommerce
+experiences at scale. Passionate about clean architecture, developer experience, and applying
+AI to real-world problems.
+
+EXPERIENCE
 ----------
-Senior Backend Engineer — ACME (2022–Present)
-- Built distributed APIs in Go
-- Reduced latency by 35%
+Software Engineer E2 — Ocado Technology, Barcelona (Dec 2025–Present)
+- Drove A/B experimentation on critical customer journeys (Optimizely)
+- Spearheaded Contentful CMS integration: led spike, built all frontend parts (GraphQL, Contentful Apps), wrote docs adopted by multiple teams
+- Implemented Sentry-to-Slack alerting and improved logging, reducing time-to-detect for production errors
+- Expanded automated test coverage: integration, E2E (Playwright), visual regression (Storybook)
+- Led accessibility improvements aligning the platform with EAA/WCAG
 
-Backend Developer — XYZ (2019–2022)
+Software Engineer E1 — Ocado Technology, Barcelona (Oct 2023–Dec 2025)
+- Built and improved subscription and Delivery Pass features using React and TypeScript
+- Standardised Zod schema validation across the frontend
+- Automated the translation sync pipeline, eliminating manual steps
+- Mentored engineers and interns; presented at Barcelona Town Hall and Ecom Demo sessions
 
-Skills
+Technology Intern — Ocado Technology, Barcelona (Jun 2023–Oct 2023)
+- Completed a 15-week software engineering training programme, transitioning directly into a full role
+
+Teacher — Colegio Sil Sarrià, Barcelona (2017–2023)
+- Taught languages and humanities; developed communication and mentoring skills
+
+Teacher — Catalunya Refer Academia d'idiomes, Sitges (2013–2017)
+- Languages instructor teaching Spanish, Catalan, and English at all levels
+
+SKILLS
 ------
-Go | Python | React | Kubernetes | AWS
+JavaScript | TypeScript | React | GraphQL | Node.js
+SCSS/CSS | Contentful | Playwright | Storybook | Optimizely | Sentry
+Accessibility | Zod | Git / CI-CD | Generative AI | RAG / LLMs | MCP
+
+EDUCATION
+---------
+La Salle BCN — Java Development (2025)
+Universitat de Barcelona — B.A. Philosophy (2013–2017)
+Universitat Autònoma de Barcelona — B.A. Musicology (2011–2015)
+
+CERTIFICATIONS
+--------------
+Advanced LLMs with RAG
+Complete Intro to MCP
+Deep JavaScript Foundations v3
+Cisco Intro to Cybersecurity
+
+LANGUAGES
+---------
+Spanish · Catalan · Russian — Native
+English — Professional
+German — Elementary
