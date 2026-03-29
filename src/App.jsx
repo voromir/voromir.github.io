@@ -649,6 +649,9 @@ function ThemeToggle({ theme, onToggleClick }) {
 
 function ThemeControls({ theme, onThemeToggle }) {
   const [terminalOpen, setTerminalOpen] = useState(false);
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
   const panelRef = useRef(null);
 
   useEffect(() => {
@@ -673,12 +676,26 @@ function ThemeControls({ theme, onThemeToggle }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleContactSubmit = (event) => {
+    event.preventDefault();
+
+    const subject = `Contact from ${contactName || "Website visitor"}`;
+    const body = [
+      `Name: ${contactName || "-"}`,
+      `Email: ${contactEmail || "-"}`,
+      "",
+      contactMessage || ""
+    ].join("\n");
+
+    window.location.href = `mailto:voro@voro.blog?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <div className="theme-controls" ref={panelRef}>
       <ThemeToggle onToggleClick={onThemeToggle} theme={theme} />
       <button
         aria-expanded={terminalOpen}
-        aria-label="Open Reader's corner"
+        aria-label="Open contact section"
         className={`settings-button terminal-trigger ${terminalOpen ? "active" : ""}`}
         onClick={() => {
           setTerminalOpen((value) => !value);
@@ -686,20 +703,18 @@ function ThemeControls({ theme, onThemeToggle }) {
         type="button"
       >
         <Icon className="icon-sm">
-          <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v16H6.5A2.5 2.5 0 0 0 4 22z" />
-          <path d="M20 20H6.5A2.5 2.5 0 0 0 4 22" />
-          <path d="M12 8h4" />
-          <path d="M12 12h4" />
+          <rect width="18" height="14" x="3" y="5" rx="2" />
+          <path d="m4 7 8 6 8-6" />
         </Icon>
       </button>
       <aside className={`terminal-drawer ${terminalOpen ? "open" : ""}`}>
         <div className="terminal-drawer-header">
           <div>
-            <p className="settings-title">Library</p>
-            <h2>Reader&apos;s corner</h2>
+            <p className="settings-title">Contact</p>
+            <h2>Get in touch</h2>
           </div>
           <button
-            aria-label="Close Reader's corner"
+            aria-label="Close contact section"
             className="settings-button"
             onClick={() => setTerminalOpen(false)}
             type="button"
@@ -711,23 +726,44 @@ function ThemeControls({ theme, onThemeToggle }) {
           </button>
         </div>
         <p className="feature-text terminal-copy">
-          A space for programming-book articles and reading notes.
+          Reach me directly by email or send a message from here.
         </p>
         <div className="terminal-command-block">
-          <p className="terminal-command-label">Clean Code</p>
-          <code>Empty for now</code>
+          <p className="terminal-command-label">Email</p>
+          <code>voro@voro.blog</code>
         </div>
-        <div className="terminal-command-block">
-          <p className="terminal-command-label">Refactoring</p>
-          <code>Empty for now</code>
-        </div>
-        <div className="terminal-command-block">
-          <p className="terminal-command-label">Designing Data-Intensive Applications</p>
-          <code>Empty for now</code>
-        </div>
-        <p className="terminal-hint">
-          More reading notes and book breakdowns can be added here later.
-        </p>
+        <form className="contact-form" onSubmit={handleContactSubmit}>
+          <label className="contact-field">
+            <span>Name</span>
+            <input
+              type="text"
+              value={contactName}
+              onChange={(event) => setContactName(event.target.value)}
+              placeholder="Your name"
+            />
+          </label>
+          <label className="contact-field">
+            <span>Email</span>
+            <input
+              type="email"
+              value={contactEmail}
+              onChange={(event) => setContactEmail(event.target.value)}
+              placeholder="your@email.com"
+            />
+          </label>
+          <label className="contact-field">
+            <span>Message</span>
+            <textarea
+              rows="6"
+              value={contactMessage}
+              onChange={(event) => setContactMessage(event.target.value)}
+              placeholder="Write your message here"
+            />
+          </label>
+          <button className="cta-primary contact-submit" type="submit">
+            Send email
+          </button>
+        </form>
       </aside>
     </div>
   );
