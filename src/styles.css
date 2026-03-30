@@ -453,6 +453,10 @@ button {
   justify-self: start;
 }
 
+.contact-honey {
+  display: none;
+}
+
 .landing-grid {
   display: grid;
   gap: 1.5rem;

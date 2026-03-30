@@ -649,9 +649,6 @@ function ThemeToggle({ theme, onToggleClick }) {
 
 function ThemeControls({ theme, onThemeToggle }) {
   const [terminalOpen, setTerminalOpen] = useState(false);
-  const [contactName, setContactName] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
-  const [contactMessage, setContactMessage] = useState("");
   const panelRef = useRef(null);
 
   useEffect(() => {
@@ -675,20 +672,6 @@ function ThemeControls({ theme, onThemeToggle }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const handleContactSubmit = (event) => {
-    event.preventDefault();
-
-    const subject = `Contact from ${contactName || "Website visitor"}`;
-    const body = [
-      `Name: ${contactName || "-"}`,
-      `Email: ${contactEmail || "-"}`,
-      "",
-      contactMessage || ""
-    ].join("\n");
-
-    window.location.href = `mailto:voro@voro.blog?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
 
   return (
     <div className="theme-controls" ref={panelRef}>
@@ -732,32 +715,40 @@ function ThemeControls({ theme, onThemeToggle }) {
           <p className="terminal-command-label">Email</p>
           <code>voro@voro.blog</code>
         </div>
-        <form className="contact-form" onSubmit={handleContactSubmit}>
+        <form
+          action="https://formsubmit.co/voro@voro.blog"
+          className="contact-form"
+          method="POST"
+        >
+          <input name="_subject" type="hidden" value="New message from voro.blog" />
+          <input name="_template" type="hidden" value="table" />
+          <input name="_captcha" type="hidden" value="true" />
+          <input name="_honey" type="text" className="contact-honey" tabIndex="-1" autoComplete="off" />
           <label className="contact-field">
             <span>Name</span>
             <input
               type="text"
-              value={contactName}
-              onChange={(event) => setContactName(event.target.value)}
+              name="name"
               placeholder="Your name"
+              required
             />
           </label>
           <label className="contact-field">
             <span>Email</span>
             <input
               type="email"
-              value={contactEmail}
-              onChange={(event) => setContactEmail(event.target.value)}
+              name="email"
               placeholder="your@email.com"
+              required
             />
           </label>
           <label className="contact-field">
             <span>Message</span>
             <textarea
+              name="message"
               rows="6"
-              value={contactMessage}
-              onChange={(event) => setContactMessage(event.target.value)}
               placeholder="Write your message here"
+              required
             />
           </label>
           <button className="cta-primary contact-submit" type="submit">
