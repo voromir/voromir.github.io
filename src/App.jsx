@@ -838,17 +838,53 @@ function AboutContent({
   navigate,
   separateConsoleLines = false,
   showConsoleNote = true,
-  showProfileButton = false,
-  landing = false
+  showProfileButton = false
 }) {
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    if (!titleRef.current) {
+      return undefined;
+    }
+
+    const timeline = gsap.timeline();
+
+    timeline.fromTo(
+      titleRef.current,
+      {
+        autoAlpha: 0,
+        y: 10
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.45,
+        ease: "power2.out"
+      }
+    );
+
+    timeline.to(titleRef.current, {
+      y: -4,
+      duration: 1.8,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true
+    });
+
+    return () => {
+      timeline.kill();
+      gsap.set(titleRef.current, { clearProps: "all" });
+    };
+  }, []);
+
   return (
     <>
       <div className="section-heading">
-        <h1 className="profile-title">Dani Vorobiev</h1>
+        <h1 className="profile-title" ref={titleRef}>Dani Vorobiev</h1>
       </div>
 
       <div className="about-layout">
-        <div className={`about-avatar${landing ? " landing-about-avatar" : ""}`}>
+        <div className="about-avatar">
           <img alt="Dani Voro" src="/Voro-profile.png" />
         </div>
         <div className="about-copy">
@@ -946,7 +982,6 @@ function HomePage({ navigate }) {
           separateConsoleLines
           showConsoleNote={false}
           showProfileButton
-          landing
         />
       </article>
 
@@ -1348,6 +1383,7 @@ function Footer() {
           <div>
             <p className="brand-name">Dani Voro</p>
             <p>Software Developer</p>
+     
           </div>
         </div>
         <p>Copyright © 2026 - All rights reserved</p>
