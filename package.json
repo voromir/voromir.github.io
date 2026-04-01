@@ -15,7 +15,8 @@
     "node": "22.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-github-calendar": "^5.0.5"
+    "react-github-calendar": "^5.0.5",
+    "tone": "file:../../music-projects/4-web-synth/node_modules/tone"
   },
   "devDependencies": {
     "vite": "^8.0.0"

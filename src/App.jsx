@@ -6,6 +6,7 @@ import javascript from "highlight.js/lib/languages/javascript";
 import xml from "highlight.js/lib/languages/xml";
 import gsap from "gsap";
 import { GitHubCalendar } from "react-github-calendar";
+import WebSynth from "./WebSynth";
 
 hljs.registerLanguage("js", javascript);
 hljs.registerLanguage("javascript", javascript);
@@ -1216,8 +1217,15 @@ function MusicPage() {
       <div className="section-heading">
         <p className="feature-kicker">Music</p>
         <h1>Create some music!</h1>
-        <p className="feature-text">Use my online synth to create some rythm</p>
+        <p className="feature-text music-page-intro">
+          I got curious about how browser audio synthesis works, so I built an
+          80s-inspired web synth. The interesting part is that the sound is
+          generated in real time on the client device through synthesis, rather
+          than playing prerecorded audio samples. It is also a small showcase of
+          how much modern browsers can do.
+        </p>
       </div>
+      <WebSynth />
     </section>
   );
 }
