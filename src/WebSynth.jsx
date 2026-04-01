@@ -45,21 +45,12 @@ const DEFAULT_ENVELOPE = {
   release: 0.5
 };
 
-function noteFromMidi(midiNoteNumber) {
-  if (midiNoteNumber < 21 || midiNoteNumber > 108) {
-    return null;
-  }
-
-  return Tone.Frequency(midiNoteNumber, "midi").toNote();
-}
-
 export default function WebSynth() {
   const shellRef = useRef(null);
   const synthRef = useRef(null);
   const masterGainRef = useRef(null);
   const vibratoRef = useRef(null);
   const activeKeyboardKeysRef = useRef(new Set());
-  const midiAccessRef = useRef(null);
 
   const [waveform, setWaveform] = useState("sine");
   const [attack, setAttack] = useState(DEFAULT_ENVELOPE.attack);
@@ -71,7 +62,6 @@ export default function WebSynth() {
   const [velocityEnabled, setVelocityEnabled] = useState(true);
   const [vibratoEnabled, setVibratoEnabled] = useState(false);
   const [currentNote, setCurrentNote] = useState("Ready");
-  const [midiConnected, setMidiConnected] = useState(false);
   const [activeNotes, setActiveNotes] = useState([]);
 
   useEffect(() => {
@@ -186,72 +176,12 @@ export default function WebSynth() {
       releaseNote(note);
     };
 
-    const handleMIDIMessage = (event) => {
-      if (!synthRef.current) {
-        return;
-      }
-
-      const [status, midiNoteNumber, midiVelocity] = event.data;
-      const note = noteFromMidi(midiNoteNumber);
-
-      if (!note) {
-        return;
-      }
-
-      if ((status & 0xf0) === 0x90 && midiVelocity > 0) {
-        synthRef.current.triggerAttack(note, undefined, velocityEnabled ? midiVelocity / 127 : 0.8);
-        activateNote(note);
-        return;
-      }
-
-      if ((status & 0xf0) === 0x80 || ((status & 0xf0) === 0x90 && midiVelocity === 0)) {
-        synthRef.current.triggerRelease(note);
-        releaseNote(note);
-      }
-    };
-
-    const attachMidiInputs = (access) => {
-      let connectedInputs = 0;
-
-      access.inputs.forEach((input) => {
-        if (input.state === "connected") {
-          input.onmidimessage = handleMIDIMessage;
-          connectedInputs += 1;
-        }
-      });
-
-      setMidiConnected(connectedInputs > 0);
-    };
-
-    const setupMIDI = async () => {
-      if (!navigator.requestMIDIAccess) {
-        return;
-      }
-
-      try {
-        const access = await navigator.requestMIDIAccess();
-        midiAccessRef.current = access;
-        attachMidiInputs(access);
-        access.onstatechange = () => attachMidiInputs(access);
-      } catch {
-        setMidiConnected(false);
-      }
-    };
-
-    setupMIDI();
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
-
-      if (midiAccessRef.current) {
-        midiAccessRef.current.inputs.forEach((input) => {
-          input.onmidimessage = null;
-        });
-        midiAccessRef.current.onstatechange = null;
-      }
     };
   }, [velocityEnabled]);
 
@@ -285,11 +215,7 @@ export default function WebSynth() {
         <div className="music-synth-header">
           <div>
             <p className="music-synth-kicker">Integrated Web Synth</p>
-            <h2>Play with mouse, keyboard, or MIDI</h2>
-          </div>
-          <div className="music-midi-status">
-            <span>MIDI</span>
-            <span className={`music-midi-led${midiConnected ? " connected" : ""}`} />
+            <h2>Play with mouse or keyboard</h2>
           </div>
         </div>
 

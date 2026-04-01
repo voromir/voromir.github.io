@@ -932,36 +932,6 @@ button {
   text-transform: uppercase;
 }
 
-.music-midi-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 0.8rem;
-  border: 1px solid rgba(255, 158, 94, 0.25);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.03);
-  color: #ffbe8e;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.music-midi-led {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  background: #5b4034;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
-}
-
-.music-midi-led.connected {
-  background: #58e07d;
-  box-shadow:
-    0 0 10px rgba(88, 224, 125, 0.8),
-    0 0 22px rgba(88, 224, 125, 0.35);
-}
-
 .music-control-card,
 .music-envelope-card,
 .music-note-display,
