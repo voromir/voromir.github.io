@@ -89,17 +89,7 @@ export default function WebSynth() {
     masterGainRef.current = masterGain;
     vibratoRef.current = vibrato;
 
-    const startAudio = async () => {
-      if (Tone.context.state !== "running") {
-        await Tone.start();
-      }
-    };
-
-    const shell = shellRef.current;
-    shell?.addEventListener("pointerdown", startAudio, { once: true });
-
     return () => {
-      shell?.removeEventListener("pointerdown", startAudio);
       synth.dispose();
       vibrato.dispose();
       compressor.dispose();
