@@ -964,8 +964,12 @@ function AboutContent({
 
       {showProfileButton ? (
         <div className="cta-row cta-row-end">
-          <NavLink className="cta-secondary" navigate={navigate} page="about">
-            View full profile
+          <NavLink className="cta-secondary profile-cta" navigate={navigate} page="about">
+            <span>View full profile</span>
+            <Icon className="icon-sm profile-cta-icon">
+              <path d="M5 12h14" />
+              <path d="m13 6 6 6-6 6" />
+            </Icon>
           </NavLink>
         </div>
       ) : null}
@@ -1484,6 +1488,80 @@ function App() {
     document.documentElement.style.backgroundColor = tint;
     document.body.style.backgroundColor = tint;
   }, [theme]);
+
+  useEffect(() => {
+    const app = appRef.current;
+
+    if (!app) {
+      return undefined;
+    }
+
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    let currentX = centerX;
+    let currentY = centerY;
+    let targetX = centerX;
+    let targetY = centerY;
+    let targetOpacity = 0;
+    let currentOpacity = 0;
+    let frameId = 0;
+
+    const renderCursorPosition = () => {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      currentOpacity += (targetOpacity - currentOpacity) * 0.1;
+
+      app.style.setProperty("--cursor-x", `${currentX}px`);
+      app.style.setProperty("--cursor-y", `${currentY}px`);
+      app.style.setProperty("--cursor-glow-opacity", currentOpacity.toFixed(3));
+
+      const isMoving =
+        Math.abs(targetX - currentX) > 0.2 ||
+        Math.abs(targetY - currentY) > 0.2 ||
+        Math.abs(targetOpacity - currentOpacity) > 0.02;
+
+      if (isMoving) {
+        frameId = window.requestAnimationFrame(renderCursorPosition);
+      } else {
+        frameId = 0;
+      }
+    };
+
+    const scheduleRender = () => {
+      if (!frameId) {
+        frameId = window.requestAnimationFrame(renderCursorPosition);
+      }
+    };
+
+    app.style.setProperty("--cursor-x", `${centerX}px`);
+    app.style.setProperty("--cursor-y", `${centerY}px`);
+    app.style.setProperty("--cursor-glow-opacity", "0");
+
+    const handlePointerMove = (event) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+      targetOpacity = 1;
+      scheduleRender();
+    };
+
+    const handlePointerLeave = () => {
+      targetX = window.innerWidth / 2;
+      targetY = window.innerHeight / 2;
+      targetOpacity = 0;
+      scheduleRender();
+    };
+
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointerleave", handlePointerLeave);
+
+    return () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerleave", handlePointerLeave);
+    };
+  }, []);
 
   const navigate = (page, mode = "push", slug) => {
     const nextHash = getHashForPage(page, slug);
