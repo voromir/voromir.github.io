@@ -137,17 +137,17 @@ button {
   --base-200: #efe7de;
   --base-300: #e4d8cb;
   --base-content: #3e3a37;
-  --primary: #5f4f7b;
+  --primary: #6c5240;
   --primary-content: #fcf8f4;
-  --border: rgba(95, 79, 123, 0.14);
+  --border: rgba(108, 82, 64, 0.14);
   --badge: #cf5a68;
   --surface-strong: rgba(255, 255, 255, 0.74);
   --surface-soft: rgba(255, 255, 255, 0.48);
   --surface-shadow: rgba(101, 80, 60, 0.14);
-  --tile-base: #dbe3ee;
-  --tile-accent: #e8edf5;
+  --tile-base: #d8c9ba;
+  --tile-accent: #e3d7cb;
   background:
-    radial-gradient(circle at top left, rgba(95, 79, 123, 0.08), transparent 28%),
+    radial-gradient(circle at top left, rgba(108, 82, 64, 0.08), transparent 28%),
     radial-gradient(circle at top right, rgba(208, 137, 92, 0.08), transparent 24%),
     linear-gradient(180deg, #f2e9df 0%, #e9ddd1 48%, #e1d5ca 100%);
   color: var(--base-content);
