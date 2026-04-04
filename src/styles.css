@@ -104,15 +104,23 @@ button {
 }
 
 .theme-dim {
-  --base-100: #2a303c;
-  --base-200: #242933;
-  --base-300: #1d232a;
-  --base-content: #a6adbb;
-  --primary: #7582ff;
-  --primary-content: #050617;
-  --border: #303741;
-  --badge: #ff637d;
-  background: var(--base-300);
+  --base-100: #252e3d;
+  --base-200: #1f2633;
+  --base-300: #141b25;
+  --base-content: #c6d0e3;
+  --primary: #8ea0ff;
+  --primary-content: #07101f;
+  --border: rgba(152, 171, 211, 0.16);
+  --badge: #ff6f86;
+  --surface-strong: rgba(255, 255, 255, 0.06);
+  --surface-soft: rgba(255, 255, 255, 0.03);
+  --surface-shadow: rgba(5, 10, 20, 0.38);
+  --tile-base: #2d394c;
+  --tile-accent: #34445b;
+  background:
+    radial-gradient(circle at top left, rgba(102, 129, 255, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(71, 201, 176, 0.08), transparent 24%),
+    linear-gradient(180deg, #1a2230 0%, #141b25 38%, #10161f 100%);
   color: var(--base-content);
 }
 
@@ -125,15 +133,23 @@ button {
 }
 
 .theme-silk {
-  --base-100: #f7f5f3;
-  --base-200: #f3ede9;
-  --base-300: #e2ddd9;
-  --base-content: #4b4743;
-  --primary: #4b4743;
-  --primary-content: #f5f4f3;
-  --border: #ddd5cf;
-  --badge: #d84d57;
-  background: var(--base-300);
+  --base-100: #faf6f1;
+  --base-200: #efe7de;
+  --base-300: #e4d8cb;
+  --base-content: #3e3a37;
+  --primary: #5f4f7b;
+  --primary-content: #fcf8f4;
+  --border: rgba(95, 79, 123, 0.14);
+  --badge: #cf5a68;
+  --surface-strong: rgba(255, 255, 255, 0.74);
+  --surface-soft: rgba(255, 255, 255, 0.48);
+  --surface-shadow: rgba(101, 80, 60, 0.14);
+  --tile-base: #dbe3ee;
+  --tile-accent: #e8edf5;
+  background:
+    radial-gradient(circle at top left, rgba(95, 79, 123, 0.08), transparent 28%),
+    radial-gradient(circle at top right, rgba(208, 137, 92, 0.08), transparent 24%),
+    linear-gradient(180deg, #f2e9df 0%, #e9ddd1 48%, #e1d5ca 100%);
   color: var(--base-content);
 }
 
@@ -258,9 +274,9 @@ button {
 .topbar-scrolled {
   padding: 0.7rem 1rem 0rem;
   border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--base-300) 72%, transparent);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
-  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--base-300) 82%, transparent);
+  box-shadow: 0 14px 34px var(--surface-shadow);
+  backdrop-filter: blur(18px) saturate(1.15);
 }
 
 .topbar-scrolled .history-button {
@@ -527,12 +543,31 @@ button {
 .list-card {
   border: 1px solid var(--border);
   border-radius: 1.5rem;
-  background: var(--base-100);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 94%, var(--tile-accent))),
+    var(--tile-base);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 24px 48px -20px var(--surface-shadow);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    background-color 0.22s ease;
 }
 
 .feature-card {
   padding: 2rem;
+}
+
+.feature-card:hover,
+.list-card:hover,
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 28px 56px -22px var(--surface-shadow);
+  border-color: color-mix(in srgb, var(--primary) 24%, var(--border));
 }
 
 .hero-feature {
@@ -613,7 +648,8 @@ button {
   flex: 0 0 auto;
   width: auto;
   max-width: 100%;
-  color: #7582ff;
+  color: color-mix(in srgb, var(--primary) 82%, white 18%);
+  text-shadow: 0 10px 30px color-mix(in srgb, var(--primary) 20%, transparent);
   font-size: 6rem;
   line-height: 0.95;
   white-space: nowrap;
@@ -639,7 +675,7 @@ button {
 .feature-text {
   font-size: 1.05rem;
   line-height: 1.7;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .section-grid {
@@ -653,7 +689,7 @@ button {
   padding: 0.9rem 1rem;
   border: 1px solid var(--border);
   border-radius: 0.9rem;
-  background: color-mix(in srgb, var(--base-200) 60%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
 }
 
 .section-chip span {
@@ -723,9 +759,21 @@ button {
   border: 1px solid var(--border);
   border-radius: 0.95rem;
   text-align: left;
-  background: color-mix(in srgb, var(--base-200) 62%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
   color: inherit;
   cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.blog-preview-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+  box-shadow: 0 16px 30px -22px var(--surface-shadow);
 }
 
 .blog-preview-meta {
@@ -812,11 +860,16 @@ button {
 .cta-primary {
   background: var(--primary);
   color: var(--primary-content);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 12px 24px -16px color-mix(in srgb, var(--primary) 42%, transparent);
 }
 
 .cta-secondary {
   border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--base-100) 82%, transparent);
   transition:
+    transform 0.18s ease,
     box-shadow 0.18s ease,
     border-color 0.18s ease,
     background-color 0.18s ease;
@@ -837,6 +890,7 @@ button {
 
 .cta-secondary:hover,
 .blog-preview-filters button:hover {
+  transform: translateY(-1px);
   box-shadow:
     0 0 0 1px rgba(117, 130, 255, 0.14),
     0 0 18px rgba(117, 130, 255, 0.12);
@@ -941,6 +995,11 @@ button {
   gap: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
+  transition: transform 0.18s ease;
+}
+
+.post-row:hover {
+  transform: translateX(4px);
 }
 
 .post-row > div:first-child {
@@ -968,7 +1027,18 @@ button {
   padding: 1.4rem;
   border: 1px solid var(--border);
   border-radius: 1rem;
-  background: color-mix(in srgb, var(--base-200) 60%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.project-tile:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--primary) 24%, var(--border));
+  box-shadow: 0 20px 30px -24px var(--surface-shadow);
 }
 
 .project-tile h2 {
@@ -1274,7 +1344,7 @@ button {
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: 1rem;
-  background: color-mix(in srgb, var(--base-200) 60%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
 }
 
 .calendar-card > * {
@@ -1295,7 +1365,18 @@ button {
   padding: 0.9rem;
   border: 1px solid var(--border);
   border-radius: 1rem;
-  background: color-mix(in srgb, var(--base-200) 60%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--primary) 24%, var(--border));
+  box-shadow: 0 20px 30px -24px var(--surface-shadow);
 }
 
 .certificate-image {
@@ -1339,7 +1420,7 @@ button {
   border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 0.9rem;
-  background: color-mix(in srgb, var(--base-200) 60%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
 }
 
 .about-avatar {
@@ -1383,7 +1464,7 @@ button {
   padding: 0.28rem 0.55rem;
   border: 1px solid var(--border);
   border-radius: 0.55rem;
-  background: color-mix(in srgb, var(--base-200) 70%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
   font-size: 0.9rem;
 }
 
@@ -1441,7 +1522,18 @@ button {
   padding: 1.4rem 1.5rem;
   border: 1px solid var(--border);
   border-radius: 1rem;
-  background: color-mix(in srgb, var(--base-200) 60%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contribution-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--primary) 24%, var(--border));
+  box-shadow: 0 18px 28px -24px var(--surface-shadow);
 }
 
 .contribution-card h2 {
@@ -1465,8 +1557,11 @@ button {
   border: 1px solid var(--border);
   border-radius: 1.5rem;
   overflow: hidden;
-  background: var(--base-100);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tile-base) 98%, var(--tile-accent)), color-mix(in srgb, var(--tile-base) 95%, var(--tile-accent)));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 28px 58px -24px var(--surface-shadow);
   margin-bottom: 3rem;
 }
 
@@ -1490,10 +1585,41 @@ button {
   margin-bottom: 1rem;
   background: var(--badge);
   color: #fff;
+  box-shadow: 0 10px 20px -16px color-mix(in srgb, var(--badge) 58%, transparent);
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.landing-grid > *,
+.list-card,
+.article-card {
+  animation: surfaceEnter 0.82s ease both;
+}
+
+.landing-grid > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.landing-grid > :nth-child(3) {
+  animation-delay: 0.14s;
+}
+
+.landing-grid > :nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+@keyframes surfaceEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .article-header h1 {
