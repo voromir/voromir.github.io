@@ -184,9 +184,11 @@ button {
   justify-content: center;
   border: 1px solid var(--border);
   border-radius: 0.5rem;
-  background: var(--base-100);
+  background-color: var(--base-100);
+  background-image: none;
   color: inherit;
   cursor: pointer;
+  box-shadow: inset 0 0 0 999px var(--base-100);
 }
 
 .history-button:disabled {
@@ -259,6 +261,14 @@ button {
   background: color-mix(in srgb, var(--base-300) 72%, transparent);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
   backdrop-filter: blur(14px);
+}
+
+.topbar-scrolled .history-button {
+  background-color: var(--base-100);
+  background-image: none;
+  box-shadow:
+    inset 0 0 0 999px var(--base-100),
+    0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .theme-toggle {
