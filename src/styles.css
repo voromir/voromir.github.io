@@ -847,6 +847,15 @@ button {
   position: relative;
   overflow: hidden;
   animation: downloadPulse 3.2s ease-in-out infinite;
+  background: color-mix(in srgb, var(--primary) 86%, white 14%);
+  color: var(--primary-content);
+  border-color: color-mix(in srgb, var(--primary) 68%, transparent);
+}
+
+.theme-silk .download-cta {
+  background: #4d3a2f;
+  color: #f7efe7;
+  border-color: rgba(77, 58, 47, 0.72);
 }
 
 .download-cta .icon-sm {
@@ -873,6 +882,11 @@ button {
     box-shadow 0.18s ease,
     border-color 0.18s ease,
     background-color 0.18s ease;
+}
+
+.theme-silk .cta-secondary {
+  background: color-mix(in srgb, var(--tile-accent) 70%, var(--base-100));
+  border-color: rgba(108, 82, 64, 0.18);
 }
 
 .profile-cta {
@@ -992,14 +1006,40 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: stretch;
   gap: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-  transition: transform 0.18s ease;
+  padding: 1.4rem 1.45rem;
+  margin-top: 1rem;
+  border: 1px solid color-mix(in srgb, white 22%, var(--border));
+  border-radius: 1.15rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--tile-base) 99%, var(--tile-accent)),
+    color-mix(in srgb, var(--tile-base) 96%, var(--tile-accent))
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 24px -20px var(--surface-shadow);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.theme-silk .post-row {
+  border-width: 1.5px;
+  border-color: rgba(108, 82, 64, 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 10px 24px -20px rgba(101, 80, 60, 0.12);
 }
 
 .post-row:hover {
   transform: translateX(4px);
+  border-color: color-mix(in srgb, white 14%, var(--primary));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 30px -24px var(--surface-shadow);
 }
 
 .post-row > div:first-child {
@@ -1008,13 +1048,20 @@ button {
 }
 
 .post-meta {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
-  align-content: start;
-  justify-items: start;
+  align-self: stretch;
+  align-items: flex-end;
+  text-align: right;
   flex: 0 0 12rem;
   min-width: 12rem;
   opacity: 0.85;
+}
+
+.post-meta .cta-secondary {
+  margin-top: auto;
+  min-width: 7.5rem;
 }
 
 .projects-grid {

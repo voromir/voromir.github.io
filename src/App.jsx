@@ -1030,9 +1030,6 @@ function BlogPage({ navigate }) {
       <div className="section-heading">
         <p className="feature-kicker">Blog</p>
         <h1>Entries</h1>
-        <p className="feature-text">
-          Every Markdown file placed in `blog-articles` is automatically added here.
-        </p>
       </div>
 
       {blogEntries.map((entry) => (
@@ -1046,7 +1043,7 @@ function BlogPage({ navigate }) {
             <span>{entry.date}</span>
             <span>{entry.readTime}</span>
             <NavLink
-              className="cta-primary"
+              className="cta-secondary"
               navigate={navigate}
               page="article"
               slug={entry.slug}
