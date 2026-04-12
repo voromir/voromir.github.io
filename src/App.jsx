@@ -881,7 +881,10 @@ function AboutContent({
   return (
     <>
       <div className="section-heading profile-heading">
-        <h1 className="profile-title" ref={titleRef}>Dani Vorobiev</h1>
+        <h1 className="profile-title">
+          <span className="profile-title-lead">You can call me</span>
+          <span className="profile-title-name" ref={titleRef}>voro</span>
+        </h1>
       </div>
 
       <div className="about-layout">
