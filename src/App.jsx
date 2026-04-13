@@ -994,30 +994,29 @@ function HomePage({ navigate }) {
       </article>
 
       <article className="feature-card compact-card">
-        <h2>Latest entries</h2>
+        <h2>Dev blog</h2>
         <p className="feature-text">
-          Notes, interesting finds, and lessons learned during my engineering journey.
+        My personal knowledge base: a mix of insights, interesting tech discoveries, and blueprints for better building. 
         </p>
         <NavLink className="cta-secondary compact-cta" navigate={navigate} page="blog">
-          Open blog
+          Go to blog
         </NavLink>
       </article>
 
       <article className="feature-card compact-card">
-        <h2>Latest projects</h2>
+        <h2>My projects</h2>
         <p className="feature-text">
-          A selection of personal projects and experiments, organized on a
-          separate page.
+          Where I test new frameworks, break things, and build functional prototypes to explore the boundaries of the web.
         </p>
         <NavLink className="cta-secondary compact-cta" navigate={navigate} page="projects">
-          Open projects
+          Go to projects
         </NavLink>
       </article>
 
       <article className="feature-card compact-card">
-        <h2>Create some music!</h2>
+        <h2>Make some noise</h2>
         <p className="feature-text">
-          A small playful corner for rhythm, experimentation, and future audio tools.
+          Explore the sonic possibilities of the web. Play, tweak, and create your sound using your browser!
         </p>
         <NavLink className="cta-secondary compact-cta" navigate={navigate} page="music">
           Open synth
