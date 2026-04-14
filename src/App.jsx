@@ -30,10 +30,26 @@ const blogSections = [
 ];
 
 const projects = [
-  "Learn Russian Efficiently",
-  "Tenis Table Finder",
-  "Visualize your strava",
-  "Music Projects"
+  {
+    title: "Learn Russian Efficiently",
+    description: "Language-learning experiments focused on practice, repetition, and better study flows.",
+    href: null
+  },
+  {
+    title: "Tenis Table Finder",
+    description: "A utility project for discovering places to play and making location data easier to use.",
+    href: null
+  },
+  {
+    title: "Visualize your strava",
+    description: "Explore and visualize your Strava activity data through a dedicated web interface.",
+    href: "https://github.com/voromir/strava-explorer"
+  },
+  {
+    title: "Music Projects",
+    description: "Browser-based sound experiments, playful interfaces, and synthesis projects on the web.",
+    href: null
+  }
 ];
 
 const certifications = [
@@ -1200,13 +1216,20 @@ function ProjectsPage() {
 
       <div className="projects-grid">
         {projects.map((project) => (
-          <article className="project-tile" key={project}>
+          <article className="project-tile" key={project.title}>
             <p className="post-category">Project</p>
-            <h2>{project}</h2>
-            <p className="feature-text">
-              Placeholder card ready to be replaced with the real project
-              content.
-            </p>
+            <h2>{project.title}</h2>
+            <p className="feature-text">{project.description}</p>
+            {project.href ? (
+              <a
+                className="text-link"
+                href={project.href}
+                rel="noreferrer"
+                target="_blank"
+              >
+                Open on GitHub
+              </a>
+            ) : null}
           </article>
         ))}
       </div>
