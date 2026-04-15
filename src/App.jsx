@@ -48,7 +48,7 @@ const projects = [
   {
     title: "Music Projects",
     description: "Browser-based sound experiments, playful interfaces, and synthesis projects on the web.",
-    href: null
+    href: "https://github.com/voromir/web-synth"
   }
 ];
 
