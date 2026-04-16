@@ -1093,6 +1093,9 @@ button {
 }
 
 .project-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
   padding: 1.4rem;
   border: 1px solid var(--border);
   border-radius: 1rem;
@@ -1114,6 +1117,19 @@ button {
   margin: 0;
   font-size: 1.35rem;
   line-height: 1.2;
+}
+
+.project-image-wrap {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary) 14%, var(--border));
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--base-200) 82%, transparent);
+}
+
+.project-image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .music-synth-shell {

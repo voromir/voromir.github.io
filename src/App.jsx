@@ -31,24 +31,28 @@ const blogSections = [
 
 const projects = [
   {
-    title: "Learn Russian Efficiently",
-    description: "Language-learning experiments focused on practice, repetition, and better study flows.",
-    href: null
-  },
-  {
-    title: "Tenis Table Finder",
-    description: "A utility project for discovering places to play and making location data easier to use.",
-    href: null
-  },
-  {
     title: "Visualize your strava",
     description: "Explore and visualize your Strava activity data through a dedicated web interface.",
-    href: "https://github.com/voromir/strava-explorer"
+    href: "https://github.com/voromir/strava-explorer",
+    image: "/strava-explorer.png"
   },
   {
     title: "Music Projects",
     description: "Browser-based sound experiments, playful interfaces, and synthesis projects on the web.",
-    href: "https://github.com/voromir/web-synth"
+    href: "https://github.com/voromir/web-synth",
+    image: "/web-synth.png"
+  },
+  {
+    title: "Learn Russian Efficiently",
+    description: "Language-learning experiments focused on practice, repetition, and better study flows.",
+    href: null,
+    image: null
+  },
+  {
+    title: "Tenis Table Finder",
+    description: "A utility project for discovering places to play and making location data easier to use.",
+    href: null,
+    image: null
   }
 ];
 
@@ -1217,6 +1221,15 @@ function ProjectsPage() {
       <div className="projects-grid">
         {projects.map((project) => (
           <article className="project-tile" key={project.title}>
+            {project.image ? (
+              <div className="project-image-wrap">
+                <img
+                  alt={project.title}
+                  className="project-image"
+                  src={project.image}
+                />
+              </div>
+            ) : null}
             <p className="post-category">Project</p>
             <h2>{project.title}</h2>
             <p className="feature-text">{project.description}</p>
