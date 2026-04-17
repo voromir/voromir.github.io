@@ -1230,7 +1230,6 @@ function ProjectsPage() {
                 />
               </div>
             ) : null}
-            <p className="post-category">Project</p>
             <h2>{project.title}</h2>
             <p className="feature-text">{project.description}</p>
             {project.href ? (
