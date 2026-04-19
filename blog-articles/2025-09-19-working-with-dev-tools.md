@@ -37,8 +37,4 @@ Filter: Lets you narrow down results to only show responses that match certain c
 
 Find: Searches for a specific value or keyword across all loaded assets (HTML, JS, CSS, etc.) that the browser has downloaded, making it easier to locate where something is coming from.
 
-## Debugging CSS
 
-## Debugging JS
-
-Minified and not minified code. Pretty printing the minified code.
