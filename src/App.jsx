@@ -1057,7 +1057,6 @@ function BlogPage({ navigate }) {
       {blogEntries.map((entry) => (
         <article className="post-row" key={entry.slug}>
           <div>
-            <p className="post-category">{entry.category}</p>
             <h2>{entry.title}</h2>
             <p className="feature-text">{entry.summary}</p>
           </div>
