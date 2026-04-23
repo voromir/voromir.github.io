@@ -1380,7 +1380,6 @@ function ArticlePage({ entry }) {
     <article className="article-card">
       <div className="article-inner">
         <header className="article-header">
-          <div className="badge">{entry.category}</div>
           <h1>{entry.headline}</h1>
 
           <div className="meta-row">
