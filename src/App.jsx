@@ -1051,7 +1051,7 @@ function BlogPage({ navigate }) {
     <section className="list-card">
       <div className="section-heading">
         <p className="feature-kicker">Blog</p>
-        <h1>Entries</h1>
+        <h1>Last Articles</h1>
       </div>
 
       {blogEntries.map((entry) => (
