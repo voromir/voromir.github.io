@@ -56,6 +56,10 @@ const projects = [
   }
 ];
 
+const projectImageSources = projects
+  .map((project) => project.image)
+  .filter(Boolean);
+
 const certifications = [
   {
     id: "java-programming",
@@ -1501,6 +1505,24 @@ function App() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [route]);
+
+  useEffect(() => {
+    const preloadProjectImages = () => {
+      projectImageSources.forEach((src) => {
+        const image = new window.Image();
+        image.decoding = "async";
+        image.src = src;
+      });
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(preloadProjectImages);
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(preloadProjectImages, 0);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   useEffect(() => {
     const tint = getBrowserTint(theme);
